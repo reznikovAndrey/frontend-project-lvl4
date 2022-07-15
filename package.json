@@ -1,0 +1,26 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "frontend-project-lvl4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "start-server -s ./frontend/build -p 5001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reznikovAndrey/frontend-project-lvl4.git"
+  },
+  "author": "Andrey Reznikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reznikovAndrey/frontend-project-lvl4/issues"
+  },
+  "homepage": "https://github.com/reznikovAndrey/frontend-project-lvl4#readme",
+  "dependencies": {
+    "@hexlet/chat-server": "^1.1.4"
+  },
+  "engines": {
+    "node": "16.16.0"
+  }
+}
