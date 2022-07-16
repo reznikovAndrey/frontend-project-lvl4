@@ -1,13 +1,24 @@
 import { Button, Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import { useRef, useEffect } from 'react';
+import {
+  useRef, useEffect, useContext, useState,
+} from 'react';
 import * as Yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+import routes from '../routes';
+import { AuthContext } from '../AuthContext';
 
 const regexp = /^\w+$/;
 
 const LoginForm = () => {
   const inputUsernameEl = useRef(null);
   useEffect(() => inputUsernameEl.current.focus(), []);
+
+  const [authError, setAuthError] = useState(false);
+  const { login, loggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -20,46 +31,60 @@ const LoginForm = () => {
         .required('Required'),
       password: Yup.string().required('Required'),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post(routes.login(), values);
+        const { data } = response;
+        login(data);
+        navigate('/', { replace: true });
+      } catch (err) {
+        const { statusCode } = err.response.data;
+        if (statusCode === 404) {
+          throw new Error('Network error');
+        }
+        setAuthError(true);
+      }
     },
   });
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <Form.Group className="mb-3" controlId="username">
-        <Form.Label>Username</Form.Label>
-        <Form.Control
-          placeholder="Your name"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.username}
-          ref={inputUsernameEl}
-          isInvalid={formik.touched.username && formik.errors.username}
-        />
-        <Form.Control.Feedback type="invalid">
-          {formik.errors.username}
-        </Form.Control.Feedback>
-      </Form.Group>
+    <Form noValidate onSubmit={formik.handleSubmit}>
+      <fieldset disabled={loggedIn}>
+        <Form.Group className="mb-3" controlId="username">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            placeholder="Your name"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.username}
+            ref={inputUsernameEl}
+            isInvalid={(formik.touched.username && formik.errors.username) || authError}
+          />
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.username}
+          </Form.Control.Feedback>
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="password">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Your password"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-          isInvalid={formik.touched.password && formik.errors.password}
-        />
-        <Form.Control.Feedback type="invalid">
-          {formik.errors.password}
-        </Form.Control.Feedback>
-      </Form.Group>
+        <Form.Group className="mb-3 position-relative" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Your password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            isInvalid={(formik.touched.password && formik.errors.password) || authError}
+          />
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.password}
+          </Form.Control.Feedback>
+          {authError && (<Form.Control.Feedback type="invalid" tooltip>Invalid username or password</Form.Control.Feedback>)}
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </fieldset>
     </Form>
   );
 };
