@@ -8,7 +8,7 @@ import { AuthProvider } from '../contexts';
 
 const App = () => (
   <AuthProvider>
-    <div className="d-flex flex-column h-100">
+    <div className="d-flex flex-column h-100 bg-light">
       <Navbar />
       <Routes>
         <Route path="/" element={<PrivatePage><HomePage /></PrivatePage>} />

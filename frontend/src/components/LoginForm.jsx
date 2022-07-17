@@ -1,4 +1,4 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useRef, useEffect, useState } from 'react';
 import * as Yup from 'yup';
@@ -46,10 +46,15 @@ const LoginForm = () => {
   });
 
   return (
+
     <Form noValidate onSubmit={formik.handleSubmit}>
+      <h1 className="text-center mb-4">Login</h1>
       <fieldset disabled={loggedIn}>
-        <Form.Group className="mb-3" controlId="username">
-          <Form.Label>Username</Form.Label>
+        <FloatingLabel
+          controlId="username"
+          label="Username"
+          className="mb-3"
+        >
           <Form.Control
             placeholder="Your name"
             onChange={formik.handleChange}
@@ -61,10 +66,12 @@ const LoginForm = () => {
           <Form.Control.Feedback type="invalid">
             {formik.errors.username}
           </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group className="mb-3 position-relative" controlId="password">
-          <Form.Label>Password</Form.Label>
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="password"
+          label="Password"
+          className="mb-4"
+        >
           <Form.Control
             type="password"
             placeholder="Your password"
@@ -77,13 +84,13 @@ const LoginForm = () => {
             {formik.errors.password}
           </Form.Control.Feedback>
           {authError && (<Form.Control.Feedback type="invalid" tooltip>Invalid username or password</Form.Control.Feedback>)}
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
+        </FloatingLabel>
+        <Button variant="outline-primary" type="submit" className="w-100 mb-3">
           Submit
         </Button>
       </fieldset>
     </Form>
+
   );
 };
 
