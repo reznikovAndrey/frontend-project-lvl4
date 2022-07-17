@@ -17,7 +17,19 @@ const AuthProvider = ({ children }) => {
     setLoggedIn(false);
   };
 
-  const memoizedValue = useMemo(() => ({ loggedIn, login, logout }), [loggedIn]);
+  const getAuthHeader = () => {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    if (!userData) {
+      return {};
+    }
+
+    const { token } = userData;
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  };
+
+  const memoizedValue = useMemo(() => ({
+    loggedIn, login, logout, getAuthHeader,
+  }), [loggedIn]);
 
   return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
 };

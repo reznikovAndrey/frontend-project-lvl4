@@ -1,3 +1,6 @@
+const apiPrefix = 'api/v1';
+
 export default {
-  login: () => 'api/v1/login',
+  login: () => [apiPrefix, 'login'].join('/'),
+  data: () => [apiPrefix, 'data'].join('/'),
 };
