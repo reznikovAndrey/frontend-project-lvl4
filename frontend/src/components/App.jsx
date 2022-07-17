@@ -11,7 +11,9 @@ const App = () => (
     <div className="d-flex flex-column h-100 bg-light">
       <Navbar />
       <Routes>
-        <Route path="/" element={<PrivatePage><HomePage /></PrivatePage>} />
+        <Route path="/" element={<PrivatePage />}>
+          <Route path="" element={<HomePage />} />
+        </Route>
         <Route path="login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

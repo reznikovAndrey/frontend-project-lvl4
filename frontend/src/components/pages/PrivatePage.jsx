@@ -1,15 +1,10 @@
-import PropTypes from 'prop-types';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 import { useAuth } from '../../hooks';
 
-const PrivatePage = ({ children }) => {
+const PrivatePage = () => {
   const { loggedIn } = useAuth();
-  return loggedIn ? children : <Navigate to="login" />;
-};
-
-PrivatePage.propTypes = {
-  children: PropTypes.node.isRequired,
+  return loggedIn ? <Outlet /> : <Navigate to="login" />;
 };
 
 export default PrivatePage;
