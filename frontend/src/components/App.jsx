@@ -1,20 +1,21 @@
 import { Routes, Route } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 
 import {
   HomePage, LoginPage, NotFoundPage, PrivatePage,
 } from './pages';
+import Navbar from './Navbar';
 import { AuthProvider } from '../contexts';
 
 const App = () => (
   <AuthProvider>
-    <Container>
+    <div className="d-flex flex-column h-100">
+      <Navbar />
       <Routes>
         <Route path="/" element={<PrivatePage><HomePage /></PrivatePage>} />
         <Route path="login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </Container>
+    </div>
   </AuthProvider>
 );
 
