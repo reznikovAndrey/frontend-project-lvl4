@@ -1,0 +1,26 @@
+{
+  "forms": {
+    "login": {
+      "fields": {
+        "username": { 
+          "label": "Имя пользователя",
+          "placeholder": "Ваше имя",
+          "error": "Используйте цифры, буквы и знак '_'"
+        },
+        "password": {
+          "label": "Пароль",
+          "placeholder": "Ваш пароль"
+        }
+      },
+      "errors": {
+        "required": "Необходимо заполнить",
+        "auth": "Неверное имя пользователя или пароль"
+      },
+      "title": "Войти",
+      "buttonText": "Отправить"
+    }
+  },
+  "nav": {
+    "logoutButtonText": "Выйти"
+  }
+}

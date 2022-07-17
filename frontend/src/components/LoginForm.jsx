@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import routes from '../routes';
 import { useAuth } from '../hooks';
@@ -11,6 +12,8 @@ import { useAuth } from '../hooks';
 const regexp = /^\w+$/;
 
 const LoginForm = () => {
+  const { t } = useTranslation();
+
   const inputUsernameEl = useRef(null);
   useEffect(() => inputUsernameEl.current.focus(), []);
 
@@ -25,9 +28,9 @@ const LoginForm = () => {
     },
     validationSchema: Yup.object({
       username: Yup.string()
-        .matches(regexp, 'Allowed digits, letters and "_"')
-        .required('Required'),
-      password: Yup.string().required('Required'),
+        .matches(regexp, t('forms.login.fields.username.error'))
+        .required(t('forms.login.errors.required')),
+      password: Yup.string().required(t('forms.login.errors.required')),
     }),
     onSubmit: async (values) => {
       try {
@@ -48,15 +51,15 @@ const LoginForm = () => {
   return (
 
     <Form noValidate onSubmit={formik.handleSubmit}>
-      <h1 className="text-center mb-4">Login</h1>
+      <h1 className="text-center mb-4">{t('forms.login.title')}</h1>
       <fieldset disabled={loggedIn}>
         <FloatingLabel
           controlId="username"
-          label="Username"
+          label={t('forms.login.fields.username.label')}
           className="mb-3"
         >
           <Form.Control
-            placeholder="Your name"
+            placeholder={t('forms.login.fields.username.placeholder')}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.username}
@@ -69,12 +72,12 @@ const LoginForm = () => {
         </FloatingLabel>
         <FloatingLabel
           controlId="password"
-          label="Password"
+          label={t('forms.login.fields.password.label')}
           className="mb-4"
         >
           <Form.Control
             type="password"
-            placeholder="Your password"
+            placeholder={t('forms.login.fields.password.placeholder')}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
@@ -83,10 +86,10 @@ const LoginForm = () => {
           <Form.Control.Feedback type="invalid">
             {formik.errors.password}
           </Form.Control.Feedback>
-          {authError && (<Form.Control.Feedback type="invalid" tooltip>Invalid username or password</Form.Control.Feedback>)}
+          {authError && (<Form.Control.Feedback type="invalid" tooltip>{t('forms.login.errors.auth')}</Form.Control.Feedback>)}
         </FloatingLabel>
         <Button variant="outline-primary" type="submit" className="w-100 mb-3">
-          Submit
+          {t('forms.login.buttonText')}
         </Button>
       </fieldset>
     </Form>

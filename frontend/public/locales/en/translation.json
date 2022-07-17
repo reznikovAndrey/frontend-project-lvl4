@@ -1,0 +1,27 @@
+{
+  "forms": {
+    "login": {
+      "fields": {
+        "username": { 
+          "label": "Username",
+          "placeholder": "Your name",
+          "error": "Use digits, letters or '_' sign"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Your password"
+        }
+      },
+      "errors": {
+        "required": "Required",
+        "auth": "Invalid username or password"
+      },
+      "title": "Login",
+      "buttonText": "Submit"
+    }
+  },
+  "nav": {
+    "logo": "Slack",
+    "logoutButtonText": "Logout"
+  }
+}
