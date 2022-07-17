@@ -1,7 +1,7 @@
-import { createContext, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-const AuthContext = createContext({});
+import AuthContext from './AuthContext';
 
 const AuthProvider = ({ children }) => {
   const isLoggedIn = localStorage.getItem('user');
@@ -26,4 +26,4 @@ AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { AuthProvider, AuthContext };
+export default AuthProvider;

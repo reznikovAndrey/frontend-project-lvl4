@@ -1,14 +1,12 @@
 import { Button, Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import {
-  useRef, useEffect, useContext, useState,
-} from 'react';
+import { useRef, useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import routes from '../routes';
-import { AuthContext } from '../AuthContext';
+import { useAuth } from '../hooks';
 
 const regexp = /^\w+$/;
 
@@ -17,7 +15,7 @@ const LoginForm = () => {
   useEffect(() => inputUsernameEl.current.focus(), []);
 
   const [authError, setAuthError] = useState(false);
-  const { login, loggedIn } = useContext(AuthContext);
+  const { login, loggedIn } = useAuth();
   const navigate = useNavigate();
 
   const formik = useFormik({
