@@ -19,4 +19,13 @@ rules:
     react/react-in-jsx-scope: 'off',
     react/function-component-definition: [2, { 'namedComponents': 'arrow-function' }],
     react/prop-types: 0,
+    import/order:
+      [
+        2,
+        {
+          groups: ['external', 'builtin', 'index', 'sibling', 'parent', 'internal', 'type'],
+          alphabetize: { 'order': 'asc', 'caseInsensitive': true },
+          newlines-between: 'always-and-inside-groups',
+        },
+      ],
   }

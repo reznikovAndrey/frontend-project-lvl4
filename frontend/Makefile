@@ -11,6 +11,6 @@ lint:
 	npx eslint --ext .jsx --ext .js .
 
 lint-fix:
-	npx prettier --write .
+	npx eslint --fix --ext .jsx --ext .js .
 
 .PHONY: build
