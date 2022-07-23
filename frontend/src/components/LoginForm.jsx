@@ -49,15 +49,10 @@ const LoginForm = () => {
   });
 
   return (
-
     <Form noValidate onSubmit={formik.handleSubmit}>
       <h1 className="text-center mb-4">{t('forms.login.title')}</h1>
       <fieldset disabled={loggedIn}>
-        <FloatingLabel
-          controlId="username"
-          label={t('forms.login.fields.username.label')}
-          className="mb-3"
-        >
+        <FloatingLabel controlId="username" label={t('forms.login.fields.username.label')} className="mb-3">
           <Form.Control
             placeholder={t('forms.login.fields.username.placeholder')}
             onChange={formik.handleChange}
@@ -66,15 +61,9 @@ const LoginForm = () => {
             ref={inputUsernameEl}
             isInvalid={(formik.touched.username && formik.errors.username) || authError}
           />
-          <Form.Control.Feedback type="invalid">
-            {formik.errors.username}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{formik.errors.username}</Form.Control.Feedback>
         </FloatingLabel>
-        <FloatingLabel
-          controlId="password"
-          label={t('forms.login.fields.password.label')}
-          className="mb-4"
-        >
+        <FloatingLabel controlId="password" label={t('forms.login.fields.password.label')} className="mb-4">
           <Form.Control
             type="password"
             placeholder={t('forms.login.fields.password.placeholder')}
@@ -83,17 +72,18 @@ const LoginForm = () => {
             value={formik.values.password}
             isInvalid={(formik.touched.password && formik.errors.password) || authError}
           />
-          <Form.Control.Feedback type="invalid">
-            {formik.errors.password}
-          </Form.Control.Feedback>
-          {authError && (<Form.Control.Feedback type="invalid" tooltip>{t('forms.login.errors.auth')}</Form.Control.Feedback>)}
+          <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
+          {authError && (
+            <Form.Control.Feedback type="invalid" tooltip>
+              {t('forms.login.errors.auth')}
+            </Form.Control.Feedback>
+          )}
         </FloatingLabel>
         <Button variant="outline-primary" type="submit" className="w-100 mb-3">
           {t('forms.login.buttonText')}
         </Button>
       </fieldset>
     </Form>
-
   );
 };
 

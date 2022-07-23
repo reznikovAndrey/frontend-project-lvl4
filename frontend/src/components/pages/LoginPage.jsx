@@ -1,6 +1,4 @@
-import {
-  Container, Row, Col, Card, Image,
-} from 'react-bootstrap';
+import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 
 import LoginForm from '../LoginForm';
 import avatarImages from '../../assets/avatar.jpg';

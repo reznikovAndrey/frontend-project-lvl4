@@ -26,9 +26,15 @@ const AuthProvider = ({ children }) => {
     return token ? { Authorization: `Bearer ${token}` } : {};
   };
 
-  const memoizedValue = useMemo(() => ({
-    loggedIn, login, logout, getAuthHeader,
-  }), [loggedIn]);
+  const memoizedValue = useMemo(
+    () => ({
+      loggedIn,
+      login,
+      logout,
+      getAuthHeader,
+    }),
+    [loggedIn],
+  );
 
   return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
 };

@@ -10,7 +10,9 @@ const Navbar = () => {
   return (
     <BootstrapNavbar bg="white" expand="lg" className="shadow-sm">
       <div className="container">
-        <BootstrapNavbar.Brand as={Link} to="/">{t('nav.logo')}</BootstrapNavbar.Brand>
+        <BootstrapNavbar.Brand as={Link} to="/">
+          {t('nav.logo')}
+        </BootstrapNavbar.Brand>
         {loggedIn && <Button onClick={logout}>{t('nav.logoutButtonText')}</Button>}
       </div>
     </BootstrapNavbar>

@@ -1,9 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import {
-  HomePage, LoginPage, NotFoundPage, PrivatePage,
-} from './pages';
+import { HomePage, LoginPage, NotFoundPage, PrivatePage } from './pages';
 import Navbar from './Navbar';
 import { AuthProvider } from '../contexts';
 import routes from '../routes';

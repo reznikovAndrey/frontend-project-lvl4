@@ -4,13 +4,10 @@ import axios from 'axios';
 
 import routes from '../routes';
 
-export const fetchChats = createAsyncThunk(
-  'data/fetchChats',
-  async (headers) => {
-    const response = await axios.get(routes.data(), { headers });
-    return response.data;
-  },
-);
+export const fetchChats = createAsyncThunk('data/fetchChats', async (headers) => {
+  const response = await axios.get(routes.data(), { headers });
+  return response.data;
+});
 
 const initialState = {
   channels: [],
