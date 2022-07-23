@@ -4,6 +4,7 @@ env:
 extends:
   - plugin:react/recommended
   - airbnb
+  - prettier
 parserOptions:
   ecmaFeatures:
     jsx: true
@@ -11,8 +12,11 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-rules: {
-  react/react-in-jsx-scope: "off",
-  react/function-component-definition: [2, { "namedComponents": "arrow-function" }],
-  react/prop-types: 0
-}
+  - prettier
+rules:
+  {
+    prettier/prettier: 2,
+    react/react-in-jsx-scope: 'off',
+    react/function-component-definition: [2, { 'namedComponents': 'arrow-function' }],
+    react/prop-types: 0,
+  }
