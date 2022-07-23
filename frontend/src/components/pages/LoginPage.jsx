@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 
-import LoginForm from '../LoginForm';
 import avatarImages from '../../assets/avatar.jpg';
+import LoginForm from '../LoginForm';
 
 const LoginPage = () => (
   <Container fluid className="flex-grow-1">

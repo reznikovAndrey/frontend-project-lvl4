@@ -1,8 +1,9 @@
-import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 
-import { HomePage, LoginPage, NotFoundPage, PrivatePage } from './pages';
 import Navbar from './Navbar';
+import { HomePage, LoginPage, NotFoundPage, PrivatePage } from './pages';
+
 import { AuthProvider } from '../contexts';
 import routes from '../routes';
 import store from '../slices';

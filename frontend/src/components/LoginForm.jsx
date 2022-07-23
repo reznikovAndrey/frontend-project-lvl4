@@ -1,13 +1,13 @@
-import { Button, Form, FloatingLabel } from 'react-bootstrap';
+import axios from 'axios';
 import { useFormik } from 'formik';
 import { useRef, useEffect, useState } from 'react';
-import * as Yup from 'yup';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
 
-import routes from '../routes';
 import { useAuth } from '../hooks';
+import routes from '../routes';
 
 const regexp = /^\w+$/;
 
