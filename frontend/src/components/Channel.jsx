@@ -1,17 +1,18 @@
 import cn from 'classnames';
+import { Nav } from 'react-bootstrap';
 
-const Channel = ({ name, isActive, clickHandler }) => {
-  const classes = cn('w-100', 'rounded-0', 'text-start', 'btn', {
-    'btn-secondary': isActive,
+const Channel = ({ id, name, isActive, clickHandler }) => {
+  const classes = cn('rounded-0', 'text-start', {
+    'bg-secondary text-white': isActive,
+    'text-black': !isActive,
   });
 
   return (
-    <li className="nav-item w-100">
-      <button type="button" className={classes} onClick={clickHandler}>
-        <span className="me-1">#</span>
-        {name}
-      </button>
-    </li>
+    <Nav.Item>
+      <Nav.Link eventKey={id} as="button" onClick={clickHandler} className={classes}>
+        # {name}
+      </Nav.Link>
+    </Nav.Item>
   );
 };
 

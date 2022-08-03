@@ -1,4 +1,4 @@
-import { Col } from 'react-bootstrap';
+import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -21,11 +21,16 @@ const Channels = () => {
         <span>{t('homepage.channels')}</span>
         <AddChannelButton />
       </div>
-      <ul className="nav flex-column nav-pills nav-fill px-2">
+      <Nav fill variant="pills" defaultActiveKey={currentChannelId} className="flex-column">
         {channels.map(({ id, name }) => (
-          <Channel key={id} name={name} clickHandler={changeChannelHandler(id)} isActive={id === currentChannelId} />
+          <Channel
+            key={id}
+            clickHandler={changeChannelHandler(id)}
+            isActive={id === currentChannelId}
+            {...{ id, name }}
+          />
         ))}
-      </ul>
+      </Nav>
     </Col>
   );
 };
