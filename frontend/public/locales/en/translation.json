@@ -18,6 +18,15 @@
       },
       "title": "Login",
       "buttonText": "Submit"
+    },
+    "addMessage": {
+      "fields": {
+        "message": {
+          "label": "Your message",
+          "placeholder": "Type your message"
+        }
+      },
+      "buttonText": "Submit"
     }
   },
   "nav": {

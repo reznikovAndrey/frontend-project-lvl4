@@ -18,6 +18,15 @@
       },
       "title": "Войти",
       "buttonText": "Отправить"
+    },
+    "addMessage": {
+      "fields": {
+        "message": {
+          "label": "Ваше сообщение",
+          "placeholder": "Введите Ваше сообщение"
+        }
+      },
+      "buttonText": "Отправить"
     }
   },
   "nav": {

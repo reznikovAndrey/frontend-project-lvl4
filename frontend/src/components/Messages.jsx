@@ -2,6 +2,8 @@ import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { AddMessageForm } from './forms';
+
 const Messages = () => {
   const { channels, currentChannelId, messages } = useSelector(({ chats }) => chats);
 
@@ -27,6 +29,9 @@ const Messages = () => {
               <b>{username}</b>: {body}
             </div>
           ))}
+        </div>
+        <div className="mt-auto px-5 py-3">
+          <AddMessageForm />
         </div>
       </div>
     </Col>

@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { useAuth } from '../hooks';
-import routes from '../routes';
+import { useAuth } from '../../hooks';
+import routes from '../../routes';
 
 const regexp = /^\w+$/;
 
