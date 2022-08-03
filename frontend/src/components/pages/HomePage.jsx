@@ -10,18 +10,17 @@ import Loader from '../Loader';
 const HomePage = () => {
   const { getAuthHeader } = useAuth();
   const dispatch = useDispatch();
-
-  const { channels, currentChannelId, loading } = useSelector(({ chats }) => chats);
-
   useEffect(() => {
     const headers = getAuthHeader();
     dispatch(fetchChats(headers));
   }, []);
 
+  const { loading } = useSelector(({ chats }) => chats);
+
   return !loading ? (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <Row className="h-100 bg-white flex-md-row">
-        <Channels channels={channels} activeChannelId={currentChannelId} />
+        <Channels />
       </Row>
     </Container>
   ) : (

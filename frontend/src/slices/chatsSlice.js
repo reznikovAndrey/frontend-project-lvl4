@@ -19,7 +19,11 @@ const initialState = {
 const chatsSlice = createSlice({
   name: 'chats',
   initialState,
-  reducers: {},
+  reducers: {
+    changeChannel: (state, { payload }) => {
+      state.currentChannelId = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchChats.pending, (state) => {
       state.loading = true;

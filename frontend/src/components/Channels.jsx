@@ -1,14 +1,17 @@
-import { useState } from 'react';
 import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useSelector, useDispatch } from 'react-redux';
 
 import AddChannelButton from './AddChannelButton';
 import Channel from './Channel';
 
-const Channels = ({ channels, activeChannelId }) => {
-  const [currentActiveChannel, setCurrentActiveChannel] = useState(activeChannelId);
+import { actions } from '../slices/chatsSlice';
 
-  const clickHandler = (id) => () => setCurrentActiveChannel(id);
+const Channels = () => {
+  const { channels, currentChannelId } = useSelector(({ chats }) => chats);
+  const dispatch = useDispatch();
+
+  const changeChannelHandler = (id) => () => dispatch(actions.changeChannel(id));
 
   const { t } = useTranslation();
 
@@ -20,7 +23,7 @@ const Channels = ({ channels, activeChannelId }) => {
       </div>
       <ul className="nav flex-column nav-pills nav-fill px-2">
         {channels.map(({ id, name }) => (
-          <Channel key={id} name={name} clickHandler={clickHandler(id)} isActive={id === currentActiveChannel} />
+          <Channel key={id} name={name} clickHandler={changeChannelHandler(id)} isActive={id === currentChannelId} />
         ))}
       </ul>
     </Col>
