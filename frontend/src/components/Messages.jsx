@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { AddMessageForm } from './forms';
+import Message from './Message';
 
 const Messages = () => {
   const { channels, currentChannelId, messages } = useSelector(({ chats }) => chats);
@@ -25,9 +26,7 @@ const Messages = () => {
         </div>
         <div className="overflow-auto px-5">
           {channelMessages.map(({ id, body, username }) => (
-            <div className="text-break mb-2" key={id}>
-              <b>{username}</b>: {body}
-            </div>
+            <Message key={id} {...{ body, username }} />
           ))}
         </div>
         <div className="mt-auto px-5 py-3">
