@@ -25,6 +25,8 @@
     "logoutButtonText": "Logout"
   },
   "homepage": {
-    "channels": "Channels"
+    "channels": "Channels",
+    "message_one": "message",
+    "message_other": "messages"
   }
 }

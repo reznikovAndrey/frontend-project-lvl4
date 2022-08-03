@@ -24,6 +24,12 @@
     "logoutButtonText": "Выйти"
   },
   "homepage": {
-    "channels": "Каналы"
+    "channels": "Каналы",
+    "message_zero": "сообщений",
+    "message_one": "сообщение",
+    "message_two": "сообщения",
+    "message_few": "сообщения",
+    "message_many": "сообщений",
+    "message_other": "сообщений"
   }
 }
