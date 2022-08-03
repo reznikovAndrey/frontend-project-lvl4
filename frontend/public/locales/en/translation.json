@@ -2,7 +2,7 @@
   "forms": {
     "login": {
       "fields": {
-        "username": { 
+        "username": {
           "label": "Username",
           "placeholder": "Your name",
           "error": "Use digits, letters or '_' sign"
@@ -23,5 +23,8 @@
   "nav": {
     "logo": "Slack",
     "logoutButtonText": "Logout"
+  },
+  "homepage": {
+    "channels": "Channels"
   }
 }

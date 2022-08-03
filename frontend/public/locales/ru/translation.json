@@ -2,7 +2,7 @@
   "forms": {
     "login": {
       "fields": {
-        "username": { 
+        "username": {
           "label": "Имя пользователя",
           "placeholder": "Ваше имя",
           "error": "Используйте цифры, буквы и знак '_'"
@@ -22,5 +22,8 @@
   },
   "nav": {
     "logoutButtonText": "Выйти"
+  },
+  "homepage": {
+    "channels": "Каналы"
   }
 }
