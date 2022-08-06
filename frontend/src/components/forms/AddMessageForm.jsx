@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useRef, useEffect } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -34,6 +35,9 @@ const AddMessageForm = () => {
     },
   });
 
+  const input = useRef(null);
+  useEffect(() => input.current.focus(), []);
+
   const { t } = useTranslation();
 
   return (
@@ -46,6 +50,7 @@ const AddMessageForm = () => {
           aria-label={t('forms.addMessage.fields.message.label')}
           value={formik.values.message}
           onChange={formik.handleChange}
+          ref={input}
         />
         <AddMessageButton isDisabled={formik.values.message.length === 0} />
       </InputGroup>
