@@ -28,6 +28,7 @@ const chatsSlice = createSlice({
     },
     addChannel: (state, { payload }) => {
       state.channels = [...state.channels, payload];
+      state.currentChannelId = payload.id;
     },
   },
   extraReducers: (builder) => {

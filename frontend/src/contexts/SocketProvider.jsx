@@ -10,10 +10,7 @@ const SocketProvider = ({ children, socket }) => {
 
   useEffect(() => {
     socket.on('newMessage', (payload) => dispatch(actions.addMessage(payload)));
-    socket.on('newChannel', (payload) => {
-      dispatch(actions.addChannel(payload));
-      dispatch(actions.changeChannel(payload.id));
-    });
+    socket.on('newChannel', (payload) => dispatch(actions.addChannel(payload)));
 
     return () => {
       socket.off('newMessage');

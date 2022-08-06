@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { AddChannelButton } from './buttons';
-import Channel from './Channel';
 import { AddChannelModal } from './modals';
 
 import { actions } from '../slices/chatsSlice';
@@ -13,7 +12,7 @@ const Channels = () => {
   const { channels, currentChannelId } = useSelector(({ chats }) => chats);
   const dispatch = useDispatch();
 
-  const changeChannelHandler = (id) => () => dispatch(actions.changeChannel(id));
+  const changeChannelHandler = (id) => dispatch(actions.changeChannel(id));
 
   const [show, setShow] = useState(false);
   const showModal = () => setShow(true);
@@ -28,14 +27,20 @@ const Channels = () => {
         <AddChannelButton handleClick={showModal} />
         <AddChannelModal show={show} handleClose={closeModal} />
       </div>
-      <Nav fill variant="pills" defaultActiveKey={currentChannelId} className="flex-column">
+      <Nav
+        fill
+        variant="pills"
+        className="flex-column"
+        defaultActiveKey={currentChannelId}
+        activeKey={currentChannelId}
+        onSelect={(selectedKey) => changeChannelHandler(+selectedKey)}
+      >
         {channels.map(({ id, name }) => (
-          <Channel
-            key={id}
-            clickHandler={changeChannelHandler(id)}
-            isActive={id === currentChannelId}
-            {...{ id, name }}
-          />
+          <Nav.Item key={id}>
+            <Nav.Link eventKey={id} as="button" className="rounded-0 text-start">
+              # {name}
+            </Nav.Link>
+          </Nav.Item>
         ))}
       </Nav>
     </Col>
