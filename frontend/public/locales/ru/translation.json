@@ -27,6 +27,13 @@
         }
       },
       "buttonText": "Отправить"
+    },
+    "addChannel": {
+      "fields": {
+        "channelName": {
+          "label": "Имя канала"
+        }
+      }
     }
   },
   "nav": {
@@ -40,5 +47,12 @@
     "message_few": "сообщения",
     "message_many": "сообщений",
     "message_other": "сообщений"
+  },
+  "modals": {
+    "addChannel": {
+      "title": "Добавить канал",
+      "cancelButtonText": "Отмена",
+      "addButtonText": "Добавить"
+    }
   }
 }

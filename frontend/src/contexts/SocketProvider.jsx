@@ -10,12 +10,20 @@ const SocketProvider = ({ children, socket }) => {
 
   useEffect(() => {
     socket.on('newMessage', (payload) => dispatch(actions.addMessage(payload)));
+    socket.on('newChannel', (payload) => {
+      dispatch(actions.addChannel(payload));
+      dispatch(actions.changeChannel(payload.id));
+    });
 
-    return () => socket.off('newMessage');
+    return () => {
+      socket.off('newMessage');
+      socket.off('newChannel');
+    };
   }, []);
 
   const mapping = useMemo(() => ({
     newMessage: (payload, response) => socket.emit('newMessage', payload, response),
+    newChannel: (payload, response) => socket.emit('newChannel', payload, response),
   }));
 
   return <SocketContext.Provider value={mapping}>{children}</SocketContext.Provider>;

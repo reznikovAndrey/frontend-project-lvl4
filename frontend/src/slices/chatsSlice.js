@@ -26,6 +26,9 @@ const chatsSlice = createSlice({
     addMessage: (state, { payload }) => {
       state.messages = [...state.messages, payload];
     },
+    addChannel: (state, { payload }) => {
+      state.channels = [...state.channels, payload];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchChats.pending, (state) => {

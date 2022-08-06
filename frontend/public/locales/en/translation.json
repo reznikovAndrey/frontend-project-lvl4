@@ -27,6 +27,13 @@
         }
       },
       "buttonText": "Submit"
+    },
+    "addChannel": {
+      "fields": {
+        "channelName": {
+          "label": "Channel name"
+        }
+      }
     }
   },
   "nav": {
@@ -37,5 +44,12 @@
     "channels": "Channels",
     "message_one": "message",
     "message_other": "messages"
+  },
+  "modals": {
+    "addChannel": {
+      "title": "Add new channel",
+      "cancelButtonText": "Cancel",
+      "addButtonText": "Add"
+    }
   }
 }
