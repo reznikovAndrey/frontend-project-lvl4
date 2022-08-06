@@ -36,7 +36,7 @@ const AddMessageForm = () => {
   });
 
   const input = useRef(null);
-  useEffect(() => input.current.focus(), []);
+  useEffect(() => input.current.focus(), [currentChannelId]);
 
   const { t } = useTranslation();
 
