@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import init from './init';
 import './index.css';
 
-import App from './components/App';
-import './i18n';
+const app = async () => {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  const vdom = await init();
+  root.render(<React.StrictMode>{vdom}</React.StrictMode>);
+};
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
-);
+app();
