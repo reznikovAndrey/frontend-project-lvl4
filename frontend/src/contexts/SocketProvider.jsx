@@ -11,7 +11,7 @@ const SocketProvider = ({ children, socket }) => {
   socket.on('newMessage', (payload) => dispatch(actions.addMessage(payload)));
 
   const mapping = useMemo(() => ({
-    newMessage: (payload) => socket.emit('newMessage', payload),
+    newMessage: (payload, response) => socket.emit('newMessage', payload, response),
   }));
 
   return <SocketContext.Provider value={mapping}>{children}</SocketContext.Provider>;

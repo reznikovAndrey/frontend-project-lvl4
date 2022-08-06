@@ -18,12 +18,19 @@ const AddMessageForm = () => {
       message: '',
     },
     onSubmit: async ({ message }, { resetForm }) => {
-      socket.newMessage({
+      const payload = {
         body: message,
         channelId: currentChannelId,
         username: getUsername(),
+      };
+
+      socket.newMessage(payload, ({ status }) => {
+        if (status === 'ok') {
+          resetForm();
+        } else {
+          console.error(status);
+        }
       });
-      resetForm();
     },
   });
 

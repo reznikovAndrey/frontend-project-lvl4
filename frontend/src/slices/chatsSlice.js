@@ -24,7 +24,7 @@ const chatsSlice = createSlice({
       state.currentChannelId = payload;
     },
     addMessage: (state, { payload }) => {
-      state.messages = [payload, ...state.messages];
+      state.messages = [...state.messages, payload];
     },
   },
   extraReducers: (builder) => {
