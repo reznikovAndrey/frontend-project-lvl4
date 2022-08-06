@@ -26,12 +26,23 @@ const AuthProvider = ({ children }) => {
     return token ? { Authorization: `Bearer ${token}` } : {};
   };
 
+  const getUsername = () => {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    if (!userData) {
+      return null;
+    }
+
+    const { username } = userData;
+    return username;
+  };
+
   const memoizedValue = useMemo(
     () => ({
       loggedIn,
       login,
       logout,
       getAuthHeader,
+      getUsername,
     }),
     [loggedIn],
   );
