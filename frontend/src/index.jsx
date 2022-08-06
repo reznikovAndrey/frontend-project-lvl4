@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { io } from 'socket.io-client';
 
 import init from './init';
 import './index.css';
 
 const app = async () => {
   const root = ReactDOM.createRoot(document.getElementById('root'));
-  const vdom = await init();
+  const socket = io();
+
+  const vdom = await init(socket);
   root.render(<React.StrictMode>{vdom}</React.StrictMode>);
 };
 

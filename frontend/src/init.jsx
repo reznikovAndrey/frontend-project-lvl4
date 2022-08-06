@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
-import { AuthProvider } from './contexts';
+import { AuthProvider, SocketProvider } from './contexts';
 import store from './slices';
 
-export default async () => {
+export default async (socket) => {
   const i18n = i18next.createInstance();
 
   await i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
@@ -22,7 +22,9 @@ export default async () => {
       <BrowserRouter>
         <Provider store={store}>
           <AuthProvider>
-            <App />
+            <SocketProvider socket={socket}>
+              <App />
+            </SocketProvider>
           </AuthProvider>
         </Provider>
       </BrowserRouter>

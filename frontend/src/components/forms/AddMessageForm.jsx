@@ -1,16 +1,28 @@
 import { useFormik } from 'formik';
 import { Form, InputGroup } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
+import { useSocket, useAuth } from '../../hooks';
 import { AddMessageButton } from '../buttons';
 
 const AddMessageForm = () => {
+  const socket = useSocket();
+
+  const { getUsername } = useAuth();
+
+  const { currentChannelId } = useSelector((state) => state.chats);
+
   const formik = useFormik({
     initialValues: {
       message: '',
     },
     onSubmit: async ({ message }, { resetForm }) => {
-      console.log(message);
+      socket.newMessage({
+        body: message,
+        channelId: currentChannelId,
+        username: getUsername(),
+      });
       resetForm();
     },
   });
