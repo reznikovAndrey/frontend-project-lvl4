@@ -1,2 +1,4 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/reznikovAndrey/frontend-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/reznikovAndrey/frontend-project-lvl4/actions) [![Eslint check](https://github.com/reznikovAndrey/frontend-project-lvl4/workflows/linter-check/badge.svg)](https://github.com/reznikovAndrey/frontend-project-lvl4/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/a7068ee894d839d9f9f7/maintainability)](https://codeclimate.com/github/reznikovAndrey/frontend-project-lvl4/maintainability)
+
+You can check deployed project on [Heroku](https://boiling-wave-24818.herokuapp.com/).
