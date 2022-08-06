@@ -33,6 +33,10 @@
         "channelName": {
           "label": "Channel name"
         }
+      },
+      "errors": {
+        "required": "Please, provide channel name",
+        "duplicate": "Channel with name '{{channelName}}' already exists"
       }
     }
   },
