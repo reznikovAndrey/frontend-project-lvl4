@@ -3,8 +3,8 @@ import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import { AddChannelButton } from './buttons';
+import ChannelModal from './ChannelModal';
 import ChannelsList from './ChannelsList';
-import { AddChannelModal } from './modals';
 
 const Channels = () => {
   const [show, setShow] = useState(false);
@@ -18,7 +18,7 @@ const Channels = () => {
       <div className="d-flex justify-content-between align-items-center mb-2 ps-4 pe-2">
         <span>{t('homepage.channels')}</span>
         <AddChannelButton handleClick={showModal} />
-        <AddChannelModal show={show} handleClose={closeModal} />
+        <ChannelModal show={show} handleClose={closeModal} />
       </div>
       <ChannelsList />
     </Col>

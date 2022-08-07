@@ -28,7 +28,7 @@
       },
       "buttonText": "Submit"
     },
-    "addChannel": {
+    "channel": {
       "fields": {
         "channelName": {
           "label": "Channel name"
@@ -52,10 +52,10 @@
     "remove": "Remove"
   },
   "modals": {
-    "addChannel": {
+    "channel": {
       "title": "Add new channel",
       "cancelButtonText": "Cancel",
-      "addButtonText": "Add"
+      "confirmButtonText": "Confirm"
     }
   }
 }

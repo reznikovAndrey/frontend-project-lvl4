@@ -28,7 +28,7 @@
       },
       "buttonText": "Отправить"
     },
-    "addChannel": {
+    "channel": {
       "fields": {
         "channelName": {
           "label": "Имя канала"
@@ -55,10 +55,10 @@
     "remove": "Удалить"
   },
   "modals": {
-    "addChannel": {
+    "channel": {
       "title": "Добавить канал",
       "cancelButtonText": "Отмена",
-      "addButtonText": "Добавить"
+      "confirmButtonText": "Подтвердить"
     }
   }
 }
