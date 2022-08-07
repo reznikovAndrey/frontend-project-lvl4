@@ -18,10 +18,13 @@ const SocketProvider = ({ children, socket }) => {
     };
   }, []);
 
-  const mapping = useMemo(() => ({
-    newMessage: (payload, response) => socket.emit('newMessage', payload, response),
-    newChannel: (payload, response) => socket.emit('newChannel', payload, response),
-  }));
+  const mapping = useMemo(
+    () => ({
+      newMessage: (payload, response) => socket.emit('newMessage', payload, response),
+      newChannel: (payload, response) => socket.emit('newChannel', payload, response),
+    }),
+    [],
+  );
 
   return <SocketContext.Provider value={mapping}>{children}</SocketContext.Provider>;
 };
