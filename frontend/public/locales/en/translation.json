@@ -47,7 +47,9 @@
   "homepage": {
     "channels": "Channels",
     "message_one": "message",
-    "message_other": "messages"
+    "message_other": "messages",
+    "rename": "Rename",
+    "remove": "Remove"
   },
   "modals": {
     "addChannel": {

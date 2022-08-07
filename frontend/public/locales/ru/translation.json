@@ -50,7 +50,9 @@
     "message_two": "сообщения",
     "message_few": "сообщения",
     "message_many": "сообщений",
-    "message_other": "сообщений"
+    "message_other": "сообщений",
+    "rename": "Переименовать",
+    "remove": "Удалить"
   },
   "modals": {
     "addChannel": {
