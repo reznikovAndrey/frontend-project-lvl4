@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -12,6 +12,8 @@ const ChannelForm = ({ closeModal }) => {
   const { channels } = useSelector((state) => state.chats);
 
   const { t } = useTranslation();
+
+  const [disabled, setDisabled] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -28,11 +30,13 @@ const ChannelForm = ({ closeModal }) => {
     }),
     validateOnChange: false,
     onSubmit: async ({ channelName }) => {
+      setDisabled(true);
       socket.newChannel({ name: channelName }, ({ status }) => {
         if (status === 'ok') {
           closeModal();
         } else {
           console.error(status);
+          setDisabled(false);
         }
       });
     },
@@ -58,7 +62,7 @@ const ChannelForm = ({ closeModal }) => {
         <Button variant="secondary" onClick={closeModal} className="me-2">
           {t('modals.channel.cancelButtonText')}
         </Button>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={disabled}>
           {t('modals.channel.confirmButtonText')}
         </Button>
       </Form.Group>

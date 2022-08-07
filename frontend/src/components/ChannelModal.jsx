@@ -8,7 +8,7 @@ const ChannelModal = ({ show, handleClose }) => {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>{t('modals.addChannel.title')}</Modal.Title>
+        <Modal.Title>{t('modals.channel.title')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ChannelForm closeModal={handleClose} />
