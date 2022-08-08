@@ -18,7 +18,7 @@ const Channels = () => {
       <div className="d-flex justify-content-between align-items-center mb-2 ps-4 pe-2">
         <span>{t('homepage.channels')}</span>
         <AddChannelButton handleClick={showModal} />
-        <ChannelModal show={show} handleClose={closeModal} />
+        <ChannelModal show={show} handleClose={closeModal} action="add" />
       </div>
       <ChannelsList />
     </Col>

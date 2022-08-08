@@ -37,7 +37,9 @@
       "errors": {
         "required": "Название канала не может быть пустым",
         "duplicate": "Канал с названием '{{channelName}}' уже существует"
-      }
+      },
+      "cancelButtonText": "Отмена",
+      "confirmButtonText": "Подтвердить"
     }
   },
   "nav": {
@@ -56,9 +58,12 @@
   },
   "modals": {
     "channel": {
-      "title": "Добавить канал",
-      "cancelButtonText": "Отмена",
-      "confirmButtonText": "Подтвердить"
+      "add": {
+        "title": "Добавить канал"
+      },
+      "rename": {
+        "title": "Переименовать канал"
+      }
     }
   }
 }

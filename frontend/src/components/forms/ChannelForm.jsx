@@ -60,10 +60,10 @@ const ChannelForm = ({ closeModal }) => {
       </Form.Group>
       <Form.Group className="d-flex justify-content-end">
         <Button variant="secondary" onClick={closeModal} className="me-2">
-          {t('modals.channel.cancelButtonText')}
+          {t('forms.channel.cancelButtonText')}
         </Button>
         <Button variant="primary" type="submit" disabled={disabled}>
-          {t('modals.channel.confirmButtonText')}
+          {t('forms.channel.confirmButtonText')}
         </Button>
       </Form.Group>
     </Form>

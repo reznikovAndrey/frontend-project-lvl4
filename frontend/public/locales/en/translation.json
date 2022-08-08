@@ -37,7 +37,9 @@
       "errors": {
         "required": "Please, provide channel name",
         "duplicate": "Channel with name '{{channelName}}' already exists"
-      }
+      },
+      "cancelButtonText": "Cancel",
+      "confirmButtonText": "Confirm"
     }
   },
   "nav": {
@@ -53,9 +55,12 @@
   },
   "modals": {
     "channel": {
-      "title": "Add new channel",
-      "cancelButtonText": "Cancel",
-      "confirmButtonText": "Confirm"
+      "add": {
+        "title": "Add new channel"
+      },
+      "rename": {
+        "title": "Rename channel"
+      }
     }
   }
 }
