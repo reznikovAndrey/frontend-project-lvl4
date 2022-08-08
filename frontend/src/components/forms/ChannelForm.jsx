@@ -7,9 +7,10 @@ import * as Yup from 'yup';
 
 import { useSocket } from '../../hooks';
 
-const ChannelForm = ({ closeModal }) => {
+const ChannelForm = ({ closeModal, targetChannelId }) => {
   const socket = useSocket();
   const { channels } = useSelector((state) => state.chats);
+  const targetChannel = channels.find(({ id }) => id === targetChannelId);
 
   const { t } = useTranslation();
 
@@ -17,7 +18,7 @@ const ChannelForm = ({ closeModal }) => {
 
   const formik = useFormik({
     initialValues: {
-      channelName: '',
+      channelName: targetChannelId ? targetChannel.name : '',
     },
     validationSchema: Yup.object({
       channelName: Yup.string()
@@ -31,14 +32,21 @@ const ChannelForm = ({ closeModal }) => {
     validateOnChange: false,
     onSubmit: async ({ channelName }) => {
       setDisabled(true);
-      socket.newChannel({ name: channelName }, ({ status }) => {
+
+      const responseHandler = ({ status }) => {
         if (status === 'ok') {
           closeModal();
         } else {
           console.error(status);
           setDisabled(false);
         }
-      });
+      };
+
+      if (targetChannelId) {
+        socket.renameChannel({ id: targetChannelId, name: channelName }, responseHandler);
+      } else {
+        socket.newChannel({ name: channelName }, responseHandler);
+      }
     },
   });
 

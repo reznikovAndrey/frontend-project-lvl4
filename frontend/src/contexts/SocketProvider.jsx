@@ -11,10 +11,12 @@ const SocketProvider = ({ children, socket }) => {
   useEffect(() => {
     socket.on('newMessage', (payload) => dispatch(actions.addMessage(payload)));
     socket.on('newChannel', (payload) => dispatch(actions.addChannel(payload)));
+    socket.on('renameChannel', (payload) => dispatch(actions.renameChannel(payload)));
 
     return () => {
       socket.off('newMessage');
       socket.off('newChannel');
+      socket.off('renameChannel');
     };
   }, []);
 
@@ -22,6 +24,7 @@ const SocketProvider = ({ children, socket }) => {
     () => ({
       newMessage: (payload, response) => socket.emit('newMessage', payload, response),
       newChannel: (payload, response) => socket.emit('newChannel', payload, response),
+      renameChannel: (payload, response) => socket.emit('renameChannel', payload, response),
     }),
     [],
   );

@@ -30,6 +30,15 @@ const chatsSlice = createSlice({
       state.channels = [...state.channels, payload];
       state.currentChannelId = payload.id;
     },
+    renameChannel: (state, { payload }) => {
+      const { id, name } = payload;
+      state.channels = state.channels.map((channel) => {
+        if (channel.id === id) {
+          channel.name = name;
+        }
+        return channel;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchChats.pending, (state) => {
