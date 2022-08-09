@@ -1,22 +1,29 @@
 import { Modal } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { ChannelForm } from './forms';
 
-const ChannelModal = ({ show, handleClose, action, targetChannelId }) => {
+import { actions } from '../slices/modalsSlice';
+
+const ChannelModal = () => {
+  const dispatch = useDispatch();
+  const { isShown, modalAction, channelId } = useSelector(({ modals }) => modals);
+  const closeModal = () => dispatch(actions.closeModal());
+
   const { t } = useTranslation();
 
-  if (!action) {
+  if (!modalAction) {
     return null;
   }
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={isShown} onHide={closeModal} centered>
       <Modal.Header closeButton>
-        <Modal.Title>{t(`modals.channel.${action}.title`)}</Modal.Title>
+        <Modal.Title>{t(`modals.channel.${modalAction}.title`)}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ChannelForm closeModal={handleClose} targetChannelId={targetChannelId} />
+        <ChannelForm closeModal={closeModal} channelId={channelId} />
       </Modal.Body>
     </Modal>
   );

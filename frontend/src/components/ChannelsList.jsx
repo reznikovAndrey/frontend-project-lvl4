@@ -8,8 +8,7 @@ import { actions } from '../slices/chatsSlice';
 const ChannelsList = () => {
   const { channels, currentChannelId } = useSelector(({ chats }) => chats);
   const dispatch = useDispatch();
-
-  const changeChannelHandler = (id) => dispatch(actions.changeChannel(id));
+  const handleSelect = (channelId) => dispatch(actions.changeChannel(+channelId));
 
   return (
     <Nav
@@ -18,7 +17,7 @@ const ChannelsList = () => {
       className="flex-column px-2"
       defaultActiveKey={currentChannelId}
       activeKey={currentChannelId}
-      onSelect={(selectedKey) => changeChannelHandler(+selectedKey)}
+      onSelect={handleSelect}
     >
       {channels.map((channelData) => (
         <Channel key={channelData.id} channelData={channelData} />
