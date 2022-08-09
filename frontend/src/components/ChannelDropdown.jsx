@@ -22,12 +22,8 @@ const ChannelDropdown = ({ channelId }) => {
         style={{ marginLeft: -1 }}
       />
       <Dropdown.Menu>
-        <Dropdown.Item eventKey="rename" active={false}>
-          {t('homepage.rename')}
-        </Dropdown.Item>
-        <Dropdown.Item eventKey="remove" active={false}>
-          {t('homepage.remove')}
-        </Dropdown.Item>
+        <Dropdown.Item eventKey="rename">{t('homepage.rename')}</Dropdown.Item>
+        <Dropdown.Item eventKey="remove">{t('homepage.remove')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
