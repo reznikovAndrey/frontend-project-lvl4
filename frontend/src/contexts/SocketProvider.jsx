@@ -1,11 +1,11 @@
-import { useMemo, useEffect } from 'react';
+import { useMemo, useEffect, createContext } from 'react';
 import { useDispatch } from 'react-redux';
-
-import SocketContext from './SocketContext';
 
 import { actions } from '../slices/chatsSlice';
 
-const SocketProvider = ({ children, socket }) => {
+export const SocketContext = createContext({});
+
+export const SocketProvider = ({ children, socket }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,5 +31,3 @@ const SocketProvider = ({ children, socket }) => {
 
   return <SocketContext.Provider value={mapping}>{children}</SocketContext.Provider>;
 };
-
-export default SocketProvider;

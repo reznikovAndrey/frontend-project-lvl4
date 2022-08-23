@@ -1,8 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, createContext } from 'react';
 
-import AuthContext from './AuthContext';
+export const AuthContext = createContext({});
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const isLoggedIn = localStorage.getItem('user');
   const [loggedIn, setLoggedIn] = useState(!!isLoggedIn);
 
@@ -49,5 +49,3 @@ const AuthProvider = ({ children }) => {
 
   return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
 };
-
-export default AuthProvider;
