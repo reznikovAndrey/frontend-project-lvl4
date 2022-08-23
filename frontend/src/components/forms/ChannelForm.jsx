@@ -2,13 +2,15 @@ import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 import { useSocket } from '../../hooks';
+import { actions } from '../../slices/chatsSlice';
 
 const ChannelForm = ({ closeModal }) => {
   const socket = useSocket();
+  const dispatch = useDispatch();
 
   const {
     chats: { channels },
@@ -36,22 +38,28 @@ const ChannelForm = ({ closeModal }) => {
     validateOnChange: false,
     onSubmit: async ({ channelName }) => {
       setDisabled(true);
-
-      const responseHandler = ({ status }) => {
-        if (status === 'ok') {
-          closeModal();
-        } else {
-          console.error(status);
-          setDisabled(false);
-        }
-      };
-
       switch (modalAction) {
         case 'add':
-          socket.newChannel({ name: channelName }, responseHandler);
+          socket.newChannel({ name: channelName }, ({ status, data }) => {
+            if (status === 'ok') {
+              const { id } = data;
+              dispatch(actions.changeChannel(id));
+              closeModal();
+            } else {
+              console.error(status);
+              setDisabled(false);
+            }
+          });
           break;
         case 'rename':
-          socket.renameChannel({ id: channelId, name: channelName }, responseHandler);
+          socket.renameChannel({ id: channelId, name: channelName }, ({ status }) => {
+            if (status === 'ok') {
+              closeModal();
+            } else {
+              console.error(status);
+              setDisabled(false);
+            }
+          });
           break;
         default:
           throw new Error('Unknown modal action:', modalAction);
