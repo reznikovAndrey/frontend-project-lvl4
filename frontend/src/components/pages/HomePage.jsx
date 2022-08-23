@@ -20,7 +20,7 @@ const HomePage = () => {
 
   return !loading ? (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
-      <Row className="h-100 bg-white flex-md-row">
+      <Row xs={2} className="h-100 bg-white">
         <Channels />
         <Messages />
       </Row>

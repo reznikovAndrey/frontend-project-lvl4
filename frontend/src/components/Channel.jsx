@@ -6,8 +6,8 @@ const Channel = ({ channelData }) => {
   const { id, name, removable } = channelData;
 
   return (
-    <Nav.Item key={id} className="d-flex">
-      <Nav.Link eventKey={id} as="button" className="rounded-0 text-start">
+    <Nav.Item key={id} className="d-flex w-100">
+      <Nav.Link eventKey={id} as="button" className="rounded-0 text-start text-truncate">
         # {name}
       </Nav.Link>
       {removable && <ChannelDropdown channelId={id} />}

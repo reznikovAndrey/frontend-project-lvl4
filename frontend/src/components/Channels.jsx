@@ -8,7 +8,7 @@ import ChannelsList from './ChannelsList';
 const Channels = () => {
   const { t } = useTranslation();
   return (
-    <Col md={2} className="border-end pt-5 px-0 bg-light">
+    <Col xs={4} md={3} lg={2} className="border-end pt-5 px-0 bg-light">
       <div className="d-flex justify-content-between align-items-center mb-2 ps-4 pe-2">
         <span>{t('homepage.channels')}</span>
         <AddChannelButton />
