@@ -60,6 +60,12 @@
       },
       "rename": {
         "title": "Rename channel"
+      },
+      "remove": {
+        "title": "Remove channel",
+        "body": "Are you sure you want to delete this channel?",
+        "cancelButtonText": "Cancel",
+        "confirmButtonText": "Remove"
       }
     }
   }

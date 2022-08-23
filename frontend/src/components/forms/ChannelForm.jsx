@@ -7,10 +7,13 @@ import * as Yup from 'yup';
 
 import { useSocket } from '../../hooks';
 
-const ChannelForm = ({ closeModal, channelId }) => {
+const ChannelForm = ({ closeModal }) => {
   const socket = useSocket();
 
-  const { channels } = useSelector(({ chats }) => chats);
+  const {
+    chats: { channels },
+    modals: { channelId, modalAction },
+  } = useSelector((state) => state);
   const targetChannel = channels.find(({ id }) => id === channelId);
 
   const { t } = useTranslation();
@@ -43,10 +46,15 @@ const ChannelForm = ({ closeModal, channelId }) => {
         }
       };
 
-      if (channelId) {
-        socket.renameChannel({ id: channelId, name: channelName }, responseHandler);
-      } else {
-        socket.newChannel({ name: channelName }, responseHandler);
+      switch (modalAction) {
+        case 'add':
+          socket.newChannel({ name: channelName }, responseHandler);
+          break;
+        case 'rename':
+          socket.renameChannel({ id: channelId, name: channelName }, responseHandler);
+          break;
+        default:
+          throw new Error('Unknown modal action:', modalAction);
       }
     },
   });

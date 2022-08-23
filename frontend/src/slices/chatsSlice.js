@@ -39,6 +39,13 @@ const chatsSlice = createSlice({
         return channel;
       });
     },
+    removeChannel: (state, { payload }) => {
+      state.channels = state.channels.filter(({ id }) => id !== payload.id);
+      state.messages = state.messages.filter(({ channelId }) => channelId !== payload.id);
+      if (state.currentChannelId === payload.id) {
+        state.currentChannelId = 1;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchChats.pending, (state) => {
