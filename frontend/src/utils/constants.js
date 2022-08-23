@@ -1,0 +1,1 @@
+export const MAX_CHANNELS_QUANTITY = 12;

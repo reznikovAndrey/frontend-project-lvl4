@@ -56,7 +56,9 @@
   "modals": {
     "channel": {
       "add": {
-        "title": "Add new channel"
+        "title": "Add new channel",
+        "body": "You have reached channels qunatity limit",
+        "cancelButtonText": "Cancel"
       },
       "rename": {
         "title": "Rename channel"
