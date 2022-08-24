@@ -1,3 +1,4 @@
-export { default as LoginForm } from './LoginForm';
+export { LoginForm } from './LoginForm';
+export { ChannelForm } from './ChannelForm';
+
 export { default as AddMessageForm } from './AddMessageForm';
-export { default as ChannelForm } from './ChannelForm';

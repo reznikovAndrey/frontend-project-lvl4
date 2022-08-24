@@ -4,12 +4,11 @@ import { useRef, useEffect, useState } from 'react';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
 
-import { useAuth } from '../../hooks';
-import routes from '../../routes';
+import getValidationSchema from './getValidationSchema';
 
-const regexp = /^\w+$/;
+import { useAuth } from '../../../hooks';
+import routes from '../../../routes';
 
 const LoginForm = () => {
   const { t } = useTranslation();
@@ -26,12 +25,7 @@ const LoginForm = () => {
       username: '',
       password: '',
     },
-    validationSchema: Yup.object({
-      username: Yup.string()
-        .matches(regexp, t('forms.login.fields.username.error'))
-        .required(t('forms.login.errors.required')),
-      password: Yup.string().required(t('forms.login.errors.required')),
-    }),
+    validationSchema: getValidationSchema(t),
     onSubmit: async (values) => {
       try {
         const response = await axios.post(routes.login(), values);

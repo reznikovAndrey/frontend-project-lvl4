@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
-import * as Yup from 'yup';
 
-import { useSocket } from '../../hooks';
-import { actions } from '../../slices/chatsSlice';
+import getValidationSchema from './getValidationSchema';
+
+import { useSocket } from '../../../hooks';
+import { actions } from '../../../slices/chatsSlice';
 
 const ChannelForm = ({ closeModal }) => {
   const socket = useSocket();
@@ -26,15 +27,7 @@ const ChannelForm = ({ closeModal }) => {
     initialValues: {
       channelName: channelId ? targetChannel.name : '',
     },
-    validationSchema: Yup.object({
-      channelName: Yup.string()
-        .trim()
-        .notOneOf(
-          channels.map(({ name }) => name),
-          ({ value }) => t('forms.channel.errors.duplicate', { channelName: value }),
-        )
-        .required(t('forms.channel.errors.required')),
-    }),
+    validationSchema: getValidationSchema(channels, t),
     validateOnChange: false,
     onSubmit: async ({ channelName }) => {
       setDisabled(true);
