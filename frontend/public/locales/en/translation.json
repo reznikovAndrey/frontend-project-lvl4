@@ -70,5 +70,13 @@
         "confirmButtonText": "Remove"
       }
     }
+  },
+  "loginPage": {
+    "footerText": "Don`t have account?",
+    "footerLink": "Registration"
+  },
+  "signupPage": {
+    "footerText": "Already have account?",
+    "footerLink": "Login"
   }
 }

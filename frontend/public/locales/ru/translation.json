@@ -73,5 +73,13 @@
         "confirmButtonText": "Удалить"
       }
     }
+  },
+  "loginPage": {
+    "footerText": "Нет аккаунта?",
+    "footerLink": "Регистрация"
+  },
+  "signupPage": {
+    "footerText": "Уже есть аккаунт?",
+    "footerLink": "Войти"
   }
 }

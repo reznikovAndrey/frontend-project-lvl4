@@ -5,4 +5,5 @@ export default {
   data: () => [apiPrefix, 'data'].join('/'),
   homePage: () => '/',
   loginPage: () => '/login',
+  signupPage: () => '/signup',
 };
