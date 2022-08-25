@@ -2,12 +2,12 @@ import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Navigate, Link } from 'react-router-dom';
 
-import loginImage from '../../assets/login.jpg';
-import { useAuth } from '../../hooks';
-import routes from '../../routes';
-import { LoginForm } from '../forms';
+import signupImage from '../assets/signup.jpg';
+import { SignupForm } from '../components/forms';
+import { useAuth } from '../hooks';
+import routes from '../routes';
 
-const LoginPage = () => {
+const SignupPage = () => {
   const { loggedIn } = useAuth();
 
   const { t } = useTranslation();
@@ -22,17 +22,17 @@ const LoginPage = () => {
             <Card.Body>
               <Row className="p-5">
                 <Col md={6} className="d-flex align-items-center justify-content-center">
-                  <Image roundedCircle alt="login-header" src={loginImage} />
+                  <Image roundedCircle alt="login-header" src={signupImage} />
                 </Col>
                 <Col md={6} className="mt-3 mt-mb-0">
-                  <LoginForm />
+                  <SignupForm />
                 </Col>
               </Row>
             </Card.Body>
             <Card.Footer className="p-4">
               <div className="text-center">
-                <span>{t('pages.login.footerText')}</span>{' '}
-                <Link to={routes.signupPage()}>{t('pages.login.footerLink')}</Link>
+                <span>{t('pages.signup.footerText')}</span>{' '}
+                <Link to={routes.loginPage()}>{t('pages.signup.footerLink')}</Link>
               </div>
             </Card.Footer>
           </Card>
@@ -42,4 +42,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;

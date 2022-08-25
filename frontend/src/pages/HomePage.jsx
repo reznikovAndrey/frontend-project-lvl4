@@ -2,11 +2,9 @@ import { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useAuth } from '../../hooks';
-import { fetchChats } from '../../slices/chatsSlice';
-import Channels from '../Channels';
-import Loader from '../Loader';
-import Messages from '../Messages';
+import { Channels, Messages, Loader } from '../components';
+import { useAuth } from '../hooks';
+import { fetchChats } from '../slices/chatsSlice';
 
 const HomePage = () => {
   const { getAuthHeader } = useAuth();
