@@ -17,7 +17,10 @@ const LoginForm = () => {
   useEffect(() => inputUsernameEl.current.focus(), []);
 
   const [authError, setAuthError] = useState(false);
-  const { login, loggedIn } = useAuth();
+  const { login } = useAuth();
+
+  const [disabled, setDisabled] = useState(false);
+
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -28,6 +31,7 @@ const LoginForm = () => {
     validationSchema: getValidationSchema(t),
     onSubmit: async (values) => {
       try {
+        setDisabled(true);
         const response = await axios.post(routes.login(), values);
         const { data } = response;
         login(data);
@@ -38,6 +42,8 @@ const LoginForm = () => {
           throw new Error('Network error');
         }
         setAuthError(true);
+      } finally {
+        setDisabled(false);
       }
     },
   });
@@ -45,38 +51,36 @@ const LoginForm = () => {
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <h1 className="text-center mb-4">{t('forms.login.title')}</h1>
-      <fieldset disabled={loggedIn}>
-        <FloatingLabel controlId="username" label={t('forms.login.fields.username.label')} className="mb-3">
-          <Form.Control
-            placeholder={t('forms.login.fields.username.placeholder')}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.username}
-            ref={inputUsernameEl}
-            isInvalid={(formik.touched.username && formik.errors.username) || authError}
-          />
-          <Form.Control.Feedback type="invalid">{formik.errors.username}</Form.Control.Feedback>
-        </FloatingLabel>
-        <FloatingLabel controlId="password" label={t('forms.login.fields.password.label')} className="mb-4">
-          <Form.Control
-            type="password"
-            placeholder={t('forms.login.fields.password.placeholder')}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            isInvalid={(formik.touched.password && formik.errors.password) || authError}
-          />
-          <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
-          {authError && (
-            <Form.Control.Feedback type="invalid" tooltip>
-              {t('forms.login.errors.auth')}
-            </Form.Control.Feedback>
-          )}
-        </FloatingLabel>
-        <Button variant="outline-primary" type="submit" className="w-100 mb-3">
-          {t('forms.login.buttonText')}
-        </Button>
-      </fieldset>
+      <FloatingLabel controlId="username" label={t('forms.login.fields.username.label')} className="mb-3">
+        <Form.Control
+          placeholder={t('forms.login.fields.username.placeholder')}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.username}
+          ref={inputUsernameEl}
+          isInvalid={(formik.touched.username && formik.errors.username) || authError}
+        />
+        <Form.Control.Feedback type="invalid">{formik.errors.username}</Form.Control.Feedback>
+      </FloatingLabel>
+      <FloatingLabel controlId="password" label={t('forms.login.fields.password.label')} className="mb-4">
+        <Form.Control
+          type="password"
+          placeholder={t('forms.login.fields.password.placeholder')}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+          isInvalid={(formik.touched.password && formik.errors.password) || authError}
+        />
+        <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
+        {authError && (
+          <Form.Control.Feedback type="invalid" tooltip>
+            {t('forms.login.errors.auth')}
+          </Form.Control.Feedback>
+        )}
+      </FloatingLabel>
+      <Button variant="outline-primary" type="submit" className="w-100 mb-3" disabled={disabled}>
+        {t('forms.login.buttonText')}
+      </Button>
     </Form>
   );
 };
