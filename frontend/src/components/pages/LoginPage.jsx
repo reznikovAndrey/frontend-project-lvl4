@@ -31,8 +31,8 @@ const LoginPage = () => {
             </Card.Body>
             <Card.Footer className="p-4">
               <div className="text-center">
-                <span>{t('loginPage.footerText')}</span>{' '}
-                <Link to={routes.signupPage()}>{t('loginPage.footerLink')}</Link>
+                <span>{t('pages.login.footerText')}</span>{' '}
+                <Link to={routes.signupPage()}>{t('pages.login.footerLink')}</Link>
               </div>
             </Card.Footer>
           </Card>

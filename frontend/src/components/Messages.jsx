@@ -20,7 +20,7 @@ const Messages = () => {
             <b># {name}</b>
           </p>
           <span className="text-muted">
-            {channelMessages.length} {t('homepage.message', { count: channelMessages.length })}
+            {channelMessages.length} {t('pages.home.message', { count: channelMessages.length })}
           </span>
         </div>
         <div className="overflow-auto px-5">

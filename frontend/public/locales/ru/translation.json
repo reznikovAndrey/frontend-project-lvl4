@@ -45,17 +45,6 @@
   "nav": {
     "logoutButtonText": "Выйти"
   },
-  "homepage": {
-    "channels": "Каналы",
-    "message_zero": "сообщений",
-    "message_one": "сообщение",
-    "message_two": "сообщения",
-    "message_few": "сообщения",
-    "message_many": "сообщений",
-    "message_other": "сообщений",
-    "rename": "Переименовать",
-    "remove": "Удалить"
-  },
   "modals": {
     "channel": {
       "add": {
@@ -74,12 +63,25 @@
       }
     }
   },
-  "loginPage": {
-    "footerText": "Нет аккаунта?",
-    "footerLink": "Регистрация"
-  },
-  "signupPage": {
-    "footerText": "Уже есть аккаунт?",
-    "footerLink": "Войти"
+  "pages": {
+    "home": {
+      "channels": "Каналы",
+      "message_zero": "сообщений",
+      "message_one": "сообщение",
+      "message_two": "сообщения",
+      "message_few": "сообщения",
+      "message_many": "сообщений",
+      "message_other": "сообщений",
+      "rename": "Переименовать",
+      "remove": "Удалить"
+    },
+    "login": {
+      "footerText": "Нет аккаунта?",
+      "footerLink": "Регистрация"
+    },
+    "sigiup": {
+      "footerText": "Уже есть аккаунт?",
+      "footerLink": "Войти"
+    }
   }
 }

@@ -46,13 +46,6 @@
     "logo": "Slack",
     "logoutButtonText": "Logout"
   },
-  "homepage": {
-    "channels": "Channels",
-    "message_one": "message",
-    "message_other": "messages",
-    "rename": "Rename",
-    "remove": "Remove"
-  },
   "modals": {
     "channel": {
       "add": {
@@ -71,12 +64,21 @@
       }
     }
   },
-  "loginPage": {
-    "footerText": "Don`t have account?",
-    "footerLink": "Registration"
-  },
-  "signupPage": {
-    "footerText": "Already have account?",
-    "footerLink": "Login"
+  "pages": {
+    "home": {
+      "channels": "Channels",
+      "message_one": "message",
+      "message_other": "messages",
+      "rename": "Rename",
+      "remove": "Remove"
+    },
+    "login": {
+      "footerText": "Don`t have account?",
+      "footerLink": "Registration"
+    },
+    "signup": {
+      "footerText": "Already have account?",
+      "footerLink": "Login"
+    }
   }
 }
