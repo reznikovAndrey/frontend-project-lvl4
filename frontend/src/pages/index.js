@@ -3,3 +3,4 @@ export { default as LoginPage } from './LoginPage';
 export { default as NotFoundPage } from './NotFoundPage';
 export { default as PrivatePage } from './PrivatePage';
 export { default as SignupPage } from './SignupPage';
+export { default as PublicPage } from './PublicPage';
