@@ -84,6 +84,10 @@ const ChannelModal = () => {
     }
   };
 
+  if (!modalAction) {
+    return null;
+  }
+
   return (
     <Modal show={isShown} onHide={closeModal} centered>
       <Modal.Header closeButton>
