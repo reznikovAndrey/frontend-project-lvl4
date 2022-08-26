@@ -2,7 +2,7 @@ import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { AddMessageForm } from './forms';
+import { MessageForm } from './forms';
 
 const Messages = () => {
   const { channels, currentChannelId, messages } = useSelector(({ chats }) => chats);
@@ -31,7 +31,7 @@ const Messages = () => {
           ))}
         </div>
         <div className="mt-auto px-4 py-3">
-          <AddMessageForm />
+          <MessageForm />
         </div>
       </div>
     </Col>
