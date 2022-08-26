@@ -10,52 +10,47 @@ import { useSocket } from '../../../hooks';
 import { actions } from '../../../slices/chatsSlice';
 
 const ChannelForm = ({ closeModal }) => {
-  const socket = useSocket();
-  const dispatch = useDispatch();
-
   const {
     chats: { channels },
     modals: { channelId, modalAction },
   } = useSelector((state) => state);
+  const [btnDisabled, setBtnDisabled] = useState(false);
+
   const targetChannel = channels.find(({ id }) => id === channelId);
+
+  const socket = useSocket();
+
+  const dispatch = useDispatch();
+  const handleaAcknowledgements = ({ status, data }) => {
+    if (status === 'ok') {
+      if (modalAction === 'add') {
+        const { id } = data;
+        dispatch(actions.changeChannel(id));
+      }
+      closeModal();
+    } else {
+      console.error(status);
+      setBtnDisabled(false);
+    }
+  };
 
   const { t } = useTranslation();
 
-  const [disabled, setDisabled] = useState(false);
-
   const formik = useFormik({
-    initialValues: {
-      channelName: channelId ? targetChannel.name : '',
-    },
+    initialValues: { channelName: channelId ? targetChannel.name : '' },
     validationSchema: getValidationSchema(channels, t),
     validateOnChange: false,
     onSubmit: async ({ channelName }) => {
-      setDisabled(true);
+      setBtnDisabled(true);
       switch (modalAction) {
         case 'add':
-          socket.newChannel({ name: channelName }, ({ status, data }) => {
-            if (status === 'ok') {
-              const { id } = data;
-              dispatch(actions.changeChannel(id));
-              closeModal();
-            } else {
-              console.error(status);
-              setDisabled(false);
-            }
-          });
+          socket.newChannel({ name: channelName }, handleaAcknowledgements);
           break;
         case 'rename':
-          socket.renameChannel({ id: channelId, name: channelName }, ({ status }) => {
-            if (status === 'ok') {
-              closeModal();
-            } else {
-              console.error(status);
-              setDisabled(false);
-            }
-          });
+          socket.renameChannel({ id: channelId, name: channelName }, handleaAcknowledgements);
           break;
         default:
-          throw new Error('Unknown modal action:', modalAction);
+          console.error('No implementation for ChannelForm with such modalAction:', modalAction);
       }
     },
   });
@@ -80,7 +75,7 @@ const ChannelForm = ({ closeModal }) => {
         <Button variant="secondary" onClick={closeModal} className="me-2">
           {t('forms.channel.cancelButtonText')}
         </Button>
-        <Button variant="primary" type="submit" disabled={disabled}>
+        <Button variant="primary" type="submit" disabled={btnDisabled}>
           {t('forms.channel.confirmButtonText')}
         </Button>
       </Form.Group>

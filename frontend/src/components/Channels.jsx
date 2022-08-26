@@ -2,8 +2,8 @@ import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import { AddChannelButton } from './buttons';
-import ChannelModal from './ChannelModal';
 import ChannelsList from './ChannelsList';
+import { ChannelModal } from './modals';
 
 const Channels = () => {
   const { t } = useTranslation();
