@@ -4,8 +4,7 @@
       "fields": {
         "username": {
           "label": "Username",
-          "placeholder": "Your name",
-          "error": "Use digits, letters or '_' sign"
+          "placeholder": "Your name"
         },
         "password": {
           "label": "Password",
