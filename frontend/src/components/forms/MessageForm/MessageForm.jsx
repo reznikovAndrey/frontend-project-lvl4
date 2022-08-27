@@ -10,16 +10,17 @@ import { AddMessageButton } from '../../buttons';
 
 const MessageForm = () => {
   const socket = useSocket();
-  const { getUsername } = useAuth();
+  const { getUserData } = useAuth();
   const { currentChannelId } = useSelector((state) => state.chats);
 
   const initialValues = { message: '' };
 
+  const { username } = getUserData();
   const handleSubmit = ({ message }, { resetForm }) => {
     const payload = {
       body: message,
       channelId: currentChannelId,
-      username: getUsername(),
+      username,
     };
     socket.newMessage(payload, ({ status }) => {
       if (status === 'ok') {
