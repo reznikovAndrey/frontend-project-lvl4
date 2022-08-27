@@ -1,12 +1,12 @@
 import * as Yup from 'yup';
 
-export default (channels, t) =>
+export default (channels) =>
   Yup.object({
     channelName: Yup.string()
       .trim()
       .notOneOf(
         channels.map(({ name }) => name),
-        ({ value }) => t('forms.channel.errors.duplicate', { channelName: value }),
+        'forms.channel.errors.duplicate',
       )
-      .required(t('forms.channel.errors.required')),
+      .required('forms.channel.errors.required'),
   });

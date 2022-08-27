@@ -1,27 +1,25 @@
-import { useFormik } from 'formik';
-import { useEffect, useRef, useState } from 'react';
+import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 
+import ChannelInput from './ChannelInput';
 import getValidationSchema from './getValidationSchema';
 
 import { useSocket } from '../../../hooks';
 import { actions } from '../../../slices/chatsSlice';
 
 const ChannelForm = ({ closeModal }) => {
+  const socket = useSocket();
+
   const {
     chats: { channels },
     modals: { channelId, modalAction },
   } = useSelector((state) => state);
-  const [btnDisabled, setBtnDisabled] = useState(false);
-
   const targetChannel = channels.find(({ id }) => id === channelId);
 
-  const socket = useSocket();
-
   const dispatch = useDispatch();
-  const handleaAcknowledgements = ({ status, data }) => {
+  const handleAcknowledgements = ({ status, data }) => {
     if (status === 'ok') {
       if (modalAction === 'add') {
         const { id } = data;
@@ -30,56 +28,45 @@ const ChannelForm = ({ closeModal }) => {
       closeModal();
     } else {
       console.error(status);
-      setBtnDisabled(false);
+    }
+  };
+
+  const handleSubmit = async ({ channelName }) => {
+    switch (modalAction) {
+      case 'add':
+        socket.newChannel({ name: channelName }, handleAcknowledgements);
+        break;
+      case 'rename':
+        socket.renameChannel({ id: channelId, name: channelName }, handleAcknowledgements);
+        break;
+      default:
+        console.error('No implementation for ChannelForm with such modalAction:', modalAction);
     }
   };
 
   const { t } = useTranslation();
 
-  const formik = useFormik({
-    initialValues: { channelName: channelId ? targetChannel.name : '' },
-    validationSchema: getValidationSchema(channels, t),
-    validateOnChange: false,
-    onSubmit: async ({ channelName }) => {
-      setBtnDisabled(true);
-      switch (modalAction) {
-        case 'add':
-          socket.newChannel({ name: channelName }, handleaAcknowledgements);
-          break;
-        case 'rename':
-          socket.renameChannel({ id: channelId, name: channelName }, handleaAcknowledgements);
-          break;
-        default:
-          console.error('No implementation for ChannelForm with such modalAction:', modalAction);
-      }
-    },
-  });
-
-  const input = useRef(null);
-  useEffect(() => input.current.focus(), []);
-
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Control
-          id="channelName"
-          onChange={formik.handleChange}
-          value={formik.values.channelName}
-          aria-label={t('forms.channel.fields.channelName.label')}
-          ref={input}
-          isInvalid={formik.errors.channelName}
-        />
-        <Form.Control.Feedback type="invalid">{formik.errors.channelName}</Form.Control.Feedback>
-      </Form.Group>
-      <Form.Group className="d-flex justify-content-end">
-        <Button variant="secondary" onClick={closeModal} className="me-2">
-          {t('forms.channel.cancelButtonText')}
-        </Button>
-        <Button variant="primary" type="submit" disabled={btnDisabled}>
-          {t('forms.channel.confirmButtonText')}
-        </Button>
-      </Form.Group>
-    </Form>
+    <Formik
+      initialValues={{ channelName: channelId ? targetChannel.name : '' }}
+      validationSchema={getValidationSchema(channels, t)}
+      validateOnChange={false}
+      onSubmit={handleSubmit}
+    >
+      {(props) => (
+        <Form noValidate onSubmit={props.handleSubmit}>
+          <ChannelInput />
+          <Form.Group className="d-flex justify-content-end">
+            <Button variant="secondary" onClick={closeModal} className="me-2">
+              {t('forms.channel.cancelButtonText')}
+            </Button>
+            <Button variant="primary" type="submit" disabled={props.isSubmitting}>
+              {t('forms.channel.confirmButtonText')}
+            </Button>
+          </Form.Group>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
