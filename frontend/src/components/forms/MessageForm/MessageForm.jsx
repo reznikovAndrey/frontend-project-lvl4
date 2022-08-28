@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Formik } from 'formik';
 import { Form, InputGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
@@ -37,7 +38,7 @@ const MessageForm = () => {
         <Form onSubmit={props.handleSubmit} className="py-1 border rounded-2">
           <InputGroup>
             <MessageInput currentChannelId={currentChannelId} />
-            <AddMessageButton isDisabled={props.errors.message} />
+            <AddMessageButton isDisabled={!!props.errors.message} />
           </InputGroup>
         </Form>
       )}

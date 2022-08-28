@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -15,6 +16,10 @@ const CardFooter = ({ type }) => {
       </div>
     </Card.Footer>
   );
+};
+
+CardFooter.propTypes = {
+  type: PropTypes.oneOf(['login', 'signup']).isRequired,
 };
 
 export default CardFooter;

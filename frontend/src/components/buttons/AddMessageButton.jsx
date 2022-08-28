@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-const AddMessageButton = ({ isDisabled }) => {
+const AddMessageButton = ({ isDisabled = false }) => {
   const { t } = useTranslation();
   return (
     <button type="submit" className="btn btn-group-vertical" disabled={isDisabled}>
@@ -13,6 +14,10 @@ const AddMessageButton = ({ isDisabled }) => {
       <span className="visually-hidden">{t('forms.addMessage.buttonText')}</span>
     </button>
   );
+};
+
+AddMessageButton.propTypes = {
+  isDisabled: PropTypes.bool,
 };
 
 export default AddMessageButton;

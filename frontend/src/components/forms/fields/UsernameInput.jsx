@@ -1,4 +1,5 @@
 import { useFormikContext } from 'formik';
+import PropTypes from 'prop-types';
 import { useRef, useEffect } from 'react';
 import { Form, FloatingLabel } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -29,6 +30,10 @@ const UsernameInput = ({ formType }) => {
       <Form.Control.Feedback type="invalid">{t(usernameErrors)}</Form.Control.Feedback>
     </FloatingLabel>
   );
+};
+
+UsernameInput.propTypes = {
+  formType: PropTypes.oneOf(['login', 'signup']).isRequired,
 };
 
 export default UsernameInput;

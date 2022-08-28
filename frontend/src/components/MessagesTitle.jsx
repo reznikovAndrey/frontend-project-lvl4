@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 const MessagesTitle = ({ name, messagesQuantity }) => {
@@ -12,6 +13,11 @@ const MessagesTitle = ({ name, messagesQuantity }) => {
       </span>
     </div>
   );
+};
+
+MessagesTitle.propTypes = {
+  name: PropTypes.string.isRequired,
+  messagesQuantity: PropTypes.number.isRequired,
 };
 
 export default MessagesTitle;

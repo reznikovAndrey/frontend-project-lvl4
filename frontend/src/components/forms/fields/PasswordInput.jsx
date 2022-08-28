@@ -1,4 +1,5 @@
 import { useFormikContext } from 'formik';
+import PropTypes from 'prop-types';
 import { Form, FloatingLabel } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
@@ -30,6 +31,10 @@ const PasswordInput = ({ formType }) => {
       )}
     </FloatingLabel>
   );
+};
+
+PasswordInput.propTypes = {
+  formType: PropTypes.oneOf(['login', 'signup']).isRequired,
 };
 
 export default PasswordInput;

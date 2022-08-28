@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import { useMemo, useEffect, createContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { Socket } from 'socket.io-client';
 
 import { actions } from '../slices/chatsSlice';
 
@@ -33,4 +35,9 @@ export const SocketProvider = ({ children, socket }) => {
   );
 
   return <SocketContext.Provider value={mapping}>{children}</SocketContext.Provider>;
+};
+
+SocketProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  socket: PropTypes.instanceOf(Socket).isRequired,
 };

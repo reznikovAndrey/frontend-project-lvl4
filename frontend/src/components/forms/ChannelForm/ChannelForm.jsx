@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
@@ -54,12 +55,14 @@ const ChannelForm = ({ closeModal }) => {
       onSubmit={handleSubmit}
     >
       {(props) => (
+        // eslint-disable-next-line react/prop-types
         <Form noValidate onSubmit={props.handleSubmit}>
           <ChannelInput />
           <Form.Group className="d-flex justify-content-end">
             <Button variant="secondary" onClick={closeModal} className="me-2">
               {t('forms.channel.cancelButtonText')}
             </Button>
+            {/* eslint-disable-next-line react/prop-types */}
             <Button variant="primary" type="submit" disabled={props.isSubmitting}>
               {t('forms.channel.confirmButtonText')}
             </Button>
@@ -68,6 +71,10 @@ const ChannelForm = ({ closeModal }) => {
       )}
     </Formik>
   );
+};
+
+ChannelForm.propTypes = {
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default ChannelForm;

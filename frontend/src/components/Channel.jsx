@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Nav } from 'react-bootstrap';
 
 import ChannelDropdown from './ChannelDropdown';
@@ -13,6 +14,14 @@ const Channel = ({ channelData }) => {
       {removable && <ChannelDropdown channelId={id} />}
     </Nav.Item>
   );
+};
+
+Channel.propTypes = {
+  channelData: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    removable: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 export default Channel;

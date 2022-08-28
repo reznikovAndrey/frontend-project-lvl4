@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -45,6 +46,13 @@ const ChannelModalFooter = ({ modalAction, isChannelsLimitWasReached, closeModal
       </>
     )
   );
+};
+
+ChannelModalFooter.propTypes = {
+  modalAction: PropTypes.oneOf(['add', 'rename', 'remove']).isRequired,
+  isChannelsLimitWasReached: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  channelId: PropTypes.number.isRequired,
 };
 
 export default ChannelModalFooter;

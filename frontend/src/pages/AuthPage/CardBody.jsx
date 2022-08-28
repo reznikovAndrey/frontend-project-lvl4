@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Row, Col, Card, Image } from 'react-bootstrap';
 
 import loginImage from '../../assets/login.jpg';
@@ -16,5 +17,9 @@ const CardBody = ({ type }) => (
     </Row>
   </Card.Body>
 );
+
+CardBody.propTypes = {
+  type: PropTypes.oneOf(['login', 'signup']).isRequired,
+};
 
 export default CardBody;

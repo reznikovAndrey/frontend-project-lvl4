@@ -1,9 +1,10 @@
 import { useFormikContext } from 'formik';
+import PropTypes from 'prop-types';
 import { useRef, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-const MessageInput = ({ currentChannelId }) => {
+const MessageInput = ({ currentChannelId = null }) => {
   const {
     handleChange,
     values: { message },
@@ -29,6 +30,10 @@ const MessageInput = ({ currentChannelId }) => {
       ref={input}
     />
   );
+};
+
+MessageInput.propTypes = {
+  currentChannelId: PropTypes.number,
 };
 
 export default MessageInput;

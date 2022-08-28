@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 import CardBody from './CardBody';
@@ -15,5 +16,9 @@ const AuthPage = ({ type }) => (
     </Row>
   </Container>
 );
+
+AuthPage.propTypes = {
+  type: PropTypes.oneOf(['login', 'signup']).isRequired,
+};
 
 export default AuthPage;

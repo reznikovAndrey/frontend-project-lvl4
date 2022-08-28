@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useMemo, createContext } from 'react';
 
 export const AuthContext = createContext({});
@@ -40,4 +41,8 @@ export const AuthProvider = ({ children }) => {
   );
 
   return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

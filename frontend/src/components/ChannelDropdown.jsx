@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,6 +28,10 @@ const ChannelDropdown = ({ channelId }) => {
       </Dropdown.Menu>
     </Dropdown>
   );
+};
+
+ChannelDropdown.propTypes = {
+  channelId: PropTypes.number.isRequired,
 };
 
 export default ChannelDropdown;
