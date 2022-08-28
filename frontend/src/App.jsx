@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import { HomePage, LoginPage, NotFoundPage, PrivatePage, PublicPage, SignupPage } from './pages';
+import { HomePage, AuthPage, NotFoundPage, PrivatePage, PublicPage } from './pages';
 
 import routes from './routes';
 
@@ -14,10 +14,10 @@ const App = () => (
         <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path={routes.loginPage()} element={<PublicPage />}>
-        <Route path="" element={<LoginPage />} />
+        <Route path="" element={<AuthPage type="login" />} />
       </Route>
       <Route path={routes.signupPage()} element={<PublicPage />}>
-        <Route path="" element={<SignupPage />} />
+        <Route path="" element={<AuthPage type="signup" />} />
       </Route>
     </Routes>
   </div>
