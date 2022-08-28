@@ -23,7 +23,7 @@ const PasswordInput = ({ formType }) => {
         type="password"
       />
       <Form.Control.Feedback type="invalid">{t(passwordErrors)}</Form.Control.Feedback>
-      {authError && (
+      {formType === 'login' && authError && (
         <Form.Control.Feedback type="invalid" tooltip>
           {t(authError)}
         </Form.Control.Feedback>

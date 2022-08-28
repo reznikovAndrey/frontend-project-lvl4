@@ -18,6 +18,41 @@
       "title": "Login",
       "buttonText": "Submit"
     },
+    "signup": {
+      "fields": {
+        "username": {
+          "label": "Username",
+          "placeholder": "Your name",
+          "errors": {
+            "short": "At least 3 symbols required",
+            "long": "Maximum length - 20 symbols"
+          }
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Your password",
+          "errors": {
+            "short": "At least 6 symbols required"
+          }
+        },
+        "passwordConfirm": {
+          "label": "Password confirm",
+          "placeholder": "Confirm your password",
+          "errors": {
+            "notMatch": "Passwords not match"
+          }
+        },
+        "errors": {
+          "required": "Required"
+        }
+      },
+      "errors": {
+        "required": "Required",
+        "auth": "User with username '{{ username }}' already exist"
+      },
+      "title": "Registration",
+      "buttonText": "Submit"
+    },
     "addMessage": {
       "fields": {
         "message": {

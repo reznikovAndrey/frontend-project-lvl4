@@ -6,8 +6,8 @@ const PasswordConfirmInput = () => {
   const {
     handleChange,
     handleBlur,
-    values: { passwordConfirm },
-    errors: { passwordConfirm: passwordConfirmErrors },
+    values: { passwordConfirm, username },
+    errors: { passwordConfirm: passwordConfirmErrors, auth: authError },
   } = useFormikContext();
 
   const { t } = useTranslation();
@@ -18,11 +18,16 @@ const PasswordConfirmInput = () => {
         onChange={handleChange}
         onBlur={handleBlur}
         value={passwordConfirm}
-        isInvalid={passwordConfirmErrors}
+        isInvalid={passwordConfirmErrors || authError}
         placeholder={t('forms.signup.fields.passwordConfirm.placeholder')}
         type="password"
       />
       <Form.Control.Feedback type="invalid">{t(passwordConfirmErrors)}</Form.Control.Feedback>
+      {authError && (
+        <Form.Control.Feedback type="invalid" tooltip>
+          {t(authError, { username })}
+        </Form.Control.Feedback>
+      )}
     </FloatingLabel>
   );
 };

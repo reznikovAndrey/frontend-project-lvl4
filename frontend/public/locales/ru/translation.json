@@ -18,6 +18,38 @@
       "title": "Войти",
       "buttonText": "Отправить"
     },
+    "signup": {
+      "fields": {
+        "username": {
+          "label": "Имя пользователя",
+          "placeholder": "Ваше имя",
+          "errors": {
+            "short": "Минимум 3 символа",
+            "long": "Максимальная длина - 20 символов"
+          }
+        },
+        "password": {
+          "label": "Пароль",
+          "placeholder": "Ваш пароль",
+          "errors": {
+            "short": "Минимум 6 символов"
+          }
+        },
+        "passwordConfirm": {
+          "label": "Подтверждение пароля",
+          "placeholder": "Подтверждение пароля",
+          "errors": {
+            "notMatch": "Пароли не совпадают"
+          }
+        }
+      },
+      "errors": {
+        "required": "Необходимо заполнить",
+        "auth": "Пользователь с именем '{{ username }}' уже существует"
+      },
+      "title": "Регистрация",
+      "buttonText": "Зарегистрироваться"
+    },
     "addMessage": {
       "fields": {
         "message": {
@@ -78,7 +110,7 @@
       "footerText": "Нет аккаунта?",
       "footerLink": "Регистрация"
     },
-    "sigiup": {
+    "signup": {
       "footerText": "Уже есть аккаунт?",
       "footerLink": "Войти"
     }
