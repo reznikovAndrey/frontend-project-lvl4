@@ -77,7 +77,7 @@
     }
   },
   "nav": {
-    "logo": "Slack",
+    "logo": "Hexlet Chat",
     "logoutButtonText": "Logout"
   },
   "modals": {
