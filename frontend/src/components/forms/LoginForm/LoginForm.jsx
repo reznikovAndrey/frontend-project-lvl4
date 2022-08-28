@@ -4,11 +4,11 @@ import { Button, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { UsernameInput, PasswordInput } from './fields';
 import getValidationSchema from './getValidationSchema';
 
 import { useAuth } from '../../../hooks';
 import routes from '../../../routes';
+import { UsernameInput, PasswordInput } from '../fields';
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -35,12 +35,13 @@ const LoginForm = () => {
       validationSchema={getValidationSchema()}
       onSubmit={handleSubmit}
       validateOnChange={false}
+      validateOnBlur={false}
     >
       {(props) => (
-        <Form noValidate onSubmit={props.handleSubmit}>
+        <Form onSubmit={props.handleSubmit}>
           <h1 className="text-center mb-4">{t('forms.login.title')}</h1>
-          <UsernameInput />
-          <PasswordInput />
+          <UsernameInput formType="login" />
+          <PasswordInput formType="login" />
           <Button variant="outline-primary" type="submit" className="w-100 mb-3" disabled={props.isSubmitting}>
             {t('forms.login.buttonText')}
           </Button>

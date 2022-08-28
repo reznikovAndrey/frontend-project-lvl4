@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { Form, FloatingLabel } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-const UsernameInput = () => {
+const UsernameInput = ({ formType }) => {
   const {
     handleChange,
     handleBlur,
@@ -17,14 +17,14 @@ const UsernameInput = () => {
   const { t } = useTranslation();
 
   return (
-    <FloatingLabel controlId="username" label={t('forms.login.fields.username.label')} className="mb-3">
+    <FloatingLabel controlId="username" label={t(`forms.${formType}.fields.username.label`)} className="mb-3">
       <Form.Control
         onChange={handleChange}
         onBlur={handleBlur}
         value={username}
         ref={inputUsernameEl}
         isInvalid={usernameErrors || authError}
-        placeholder={t('forms.login.fields.username.placeholder')}
+        placeholder={t(`forms.${formType}.fields.username.placeholder`)}
       />
       <Form.Control.Feedback type="invalid">{t(usernameErrors)}</Form.Control.Feedback>
     </FloatingLabel>

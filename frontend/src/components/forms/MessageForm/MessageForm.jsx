@@ -3,10 +3,10 @@ import { Form, InputGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 import getValidationSchema from './getValidationSchema';
-import MessageInput from './MessageInput';
 
 import { useSocket, useAuth } from '../../../hooks';
 import { AddMessageButton } from '../../buttons';
+import { MessageInput } from '../fields';
 
 const MessageForm = () => {
   const socket = useSocket();

@@ -3,11 +3,11 @@ import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 
-import ChannelInput from './ChannelInput';
 import getValidationSchema from './getValidationSchema';
 
 import { useSocket } from '../../../hooks';
 import { actions } from '../../../slices/chatsSlice';
+import { ChannelInput } from '../fields';
 
 const ChannelForm = ({ closeModal }) => {
   const socket = useSocket();
