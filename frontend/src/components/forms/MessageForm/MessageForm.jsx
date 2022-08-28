@@ -38,7 +38,7 @@ const MessageForm = () => {
         <Form onSubmit={props.handleSubmit} className="py-1 border rounded-2">
           <InputGroup>
             <MessageInput currentChannelId={currentChannelId} />
-            <AddMessageButton isDisabled={!!props.errors.message} />
+            <AddMessageButton isDisabled={!props.isValid} />
           </InputGroup>
         </Form>
       )}

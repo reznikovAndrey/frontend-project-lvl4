@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useSocket } from '../../../hooks';
 
-const ChannelModalFooter = ({ modalAction, isChannelsLimitWasReached, closeModal, channelId }) => {
+const ChannelModalFooter = ({ modalAction, isChannelsLimitWasReached, closeModal, channelId = null }) => {
   const [btnDisabled, setBtnDisabled] = useState(false);
 
   const socket = useSocket();
@@ -52,7 +52,7 @@ ChannelModalFooter.propTypes = {
   modalAction: PropTypes.oneOf(['add', 'rename', 'remove']).isRequired,
   isChannelsLimitWasReached: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-  channelId: PropTypes.number.isRequired,
+  channelId: PropTypes.number,
 };
 
 export default ChannelModalFooter;
