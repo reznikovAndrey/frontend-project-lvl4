@@ -13,22 +13,12 @@ const App = () => (
         <Route path="" element={<HomePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
-      <Route
-        path={routes.loginPage()}
-        element={
-          <PublicPage>
-            <LoginPage />
-          </PublicPage>
-        }
-      />
-      <Route
-        path={routes.signupPage()}
-        element={
-          <PublicPage>
-            <SignupPage />
-          </PublicPage>
-        }
-      />
+      <Route path={routes.loginPage()} element={<PublicPage />}>
+        <Route path="" element={<LoginPage />} />
+      </Route>
+      <Route path={routes.signupPage()} element={<PublicPage />}>
+        <Route path="" element={<SignupPage />} />
+      </Route>
     </Routes>
   </div>
 );

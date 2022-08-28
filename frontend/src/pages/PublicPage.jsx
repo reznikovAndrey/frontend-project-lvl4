@@ -1,10 +1,10 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
 import routes from '../routes';
 
-const PublicPage = ({ children }) => {
+const PublicPage = () => {
   const { loggedIn } = useAuth();
 
   return loggedIn ? (
@@ -13,7 +13,7 @@ const PublicPage = ({ children }) => {
     <Container fluid className="flex-grow-1">
       <Row className="row justify-content-center align-content-center h-100">
         <Col md={8} xxl={6}>
-          {children}
+          <Outlet />
         </Col>
       </Row>
     </Container>
