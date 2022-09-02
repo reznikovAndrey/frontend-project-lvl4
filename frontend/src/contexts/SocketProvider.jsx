@@ -26,10 +26,10 @@ export const SocketProvider = ({ children, socket }) => {
 
   const mapping = useMemo(
     () => ({
-      newMessage: (payload, response) => socket.emit('newMessage', payload, response),
-      newChannel: (payload, response) => socket.emit('newChannel', payload, response),
-      renameChannel: (payload, response) => socket.emit('renameChannel', payload, response),
-      removeChannel: (payload, response) => socket.emit('removeChannel', payload, response),
+      newMessage: (payload, response) => socket.volatile.emit('newMessage', payload, response),
+      newChannel: (payload, response) => socket.volatile.emit('newChannel', payload, response),
+      renameChannel: (payload, response) => socket.volatile.emit('renameChannel', payload, response),
+      removeChannel: (payload, response) => socket.volatile.emit('removeChannel', payload, response),
     }),
     [],
   );
