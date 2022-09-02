@@ -1,0 +1,120 @@
+{
+  "translation": {
+    "forms": {
+      "login": {
+        "fields": {
+          "username": {
+            "label": "Имя пользователя",
+            "placeholder": "Ваше имя"
+          },
+          "password": {
+            "label": "Пароль",
+            "placeholder": "Ваш пароль"
+          }
+        },
+        "errors": {
+          "required": "Необходимо заполнить",
+          "auth": "Неверное имя пользователя или пароль"
+        },
+        "title": "Войти",
+        "buttonText": "Отправить"
+      },
+      "signup": {
+        "fields": {
+          "username": {
+            "label": "Имя пользователя",
+            "placeholder": "Ваше имя",
+            "errors": {
+              "short": "Минимум 3 символа",
+              "long": "Максимальная длина - 20 символов"
+            }
+          },
+          "password": {
+            "label": "Пароль",
+            "placeholder": "Ваш пароль",
+            "errors": {
+              "short": "Минимум 6 символов"
+            }
+          },
+          "passwordConfirm": {
+            "label": "Подтверждение пароля",
+            "placeholder": "Подтверждение пароля",
+            "errors": {
+              "notMatch": "Пароли не совпадают"
+            }
+          }
+        },
+        "errors": {
+          "required": "Необходимо заполнить",
+          "auth": "Пользователь с именем '{{ username }}' уже существует"
+        },
+        "title": "Регистрация",
+        "buttonText": "Зарегистрироваться"
+      },
+      "addMessage": {
+        "fields": {
+          "message": {
+            "label": "Ваше сообщение",
+            "placeholder": "Введите Ваше сообщение"
+          }
+        },
+        "buttonText": "Отправить"
+      },
+      "channel": {
+        "fields": {
+          "channelName": {
+            "label": "Имя канала"
+          }
+        },
+        "errors": {
+          "required": "Название канала не может быть пустым",
+          "duplicate": "Канал с названием '{{channelName}}' уже существует"
+        },
+        "cancelButtonText": "Отмена",
+        "confirmButtonText": "Подтвердить"
+      }
+    },
+    "nav": {
+      "logoutButtonText": "Выйти"
+    },
+    "modals": {
+      "channel": {
+        "add": {
+          "title": "Добавить канал",
+          "body": "Вы достигли лимита по количеству активных каналов",
+          "cancelButtonText": "Отмена"
+        },
+        "rename": {
+          "title": "Переименовать канал"
+        },
+        "remove": {
+          "title": "Удаление канала",
+          "body": "Вы уверены, что хотите удалить этот канал?",
+          "cancelButtonText": "Отмена",
+          "confirmButtonText": "Удалить"
+        }
+      }
+    },
+    "pages": {
+      "home": {
+        "channels": "Каналы",
+        "message_zero": "сообщений",
+        "message_one": "сообщение",
+        "message_two": "сообщения",
+        "message_few": "сообщения",
+        "message_many": "сообщений",
+        "message_other": "сообщений",
+        "rename": "Переименовать",
+        "remove": "Удалить"
+      },
+      "login": {
+        "footerText": "Нет аккаунта?",
+        "footerLink": "Регистрация"
+      },
+      "signup": {
+        "footerText": "Уже есть аккаунт?",
+        "footerLink": "Войти"
+      }
+    }
+  }
+}
