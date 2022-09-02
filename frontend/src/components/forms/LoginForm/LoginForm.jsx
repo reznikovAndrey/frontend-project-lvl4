@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import { Button, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import getValidationSchema from './getValidationSchema';
 
@@ -25,8 +26,12 @@ const LoginForm = () => {
       login(data);
       navigate('/', { replace: true });
     } catch (err) {
-      console.error(err);
-      setFieldError('auth', 'forms.login.errors.auth');
+      if (axios.isAxiosError(err) && err.response.data?.statusCode === 401) {
+        setFieldError('auth', 'forms.login.errors.auth');
+      } else {
+        console.error(err);
+        toast(t('notifications.errors.network'), { type: 'error' });
+      }
     }
   };
 

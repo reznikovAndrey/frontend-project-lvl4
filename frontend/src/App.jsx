@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from './components/Navbar';
 import { HomePage, AuthPage, NotFoundPage, PrivatePage, PublicPage } from './pages';
@@ -20,6 +21,7 @@ const App = () => (
         <Route path="" element={<AuthPage type="signup" />} />
       </Route>
     </Routes>
+    <ToastContainer />
   </div>
 );
 

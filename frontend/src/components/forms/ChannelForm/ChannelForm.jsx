@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import getValidationSchema from './getValidationSchema';
 
@@ -12,6 +13,7 @@ import { ChannelInput } from '../fields';
 
 const ChannelForm = ({ closeModal }) => {
   const socket = useSocket();
+  const { t } = useTranslation();
 
   const {
     chats: { channels },
@@ -26,6 +28,7 @@ const ChannelForm = ({ closeModal }) => {
         const { id } = data;
         dispatch(actions.changeChannel(id));
       }
+      toast(t(`notifications.success.channel.${modalAction}`), { type: 'success' });
       closeModal();
     } else {
       console.error(status);
@@ -44,8 +47,6 @@ const ChannelForm = ({ closeModal }) => {
         console.error('No implementation for ChannelForm with such modalAction:', modalAction);
     }
   };
-
-  const { t } = useTranslation();
 
   return (
     <Formik

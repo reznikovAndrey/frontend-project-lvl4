@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import getValidationSchema from './getValidationSchema';
 
@@ -29,11 +30,11 @@ const SignupForm = () => {
       login(data);
       navigate('/', { replace: true });
     } catch (err) {
-      const { statusCode } = err.response.data;
-      if (statusCode === 409) {
+      if (axios.isAxiosError(err) && err.response.data?.statusCode === 409) {
         setFieldError('auth', 'forms.signup.errors.auth');
       } else {
         console.error(err);
+        toast(t('notifications.errors.network'), { type: 'error' });
       }
     }
   };

@@ -115,6 +115,18 @@
         "footerText": "Already have account?",
         "footerLink": "Login"
       }
+    },
+    "notifications": {
+      "errors": {
+        "network": "Network error"
+      },
+      "success": {
+        "channel": {
+          "add": "Channel was created",
+          "rename": "Channel was renamed",
+          "remove": "Channel was removed"
+        }
+      }
     }
   }
 }

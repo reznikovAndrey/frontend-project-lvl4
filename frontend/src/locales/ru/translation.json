@@ -115,6 +115,18 @@
         "footerText": "Уже есть аккаунт?",
         "footerLink": "Войти"
       }
+    },
+    "notifications": {
+      "errors": {
+        "network": "Ошибка сети"
+      },
+      "success": {
+        "channel": {
+          "add": "Канал создан",
+          "rename": "Канал переименован",
+          "remove": "Канал удален"
+        }
+      }
     }
   }
 }
