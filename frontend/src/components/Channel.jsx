@@ -1,3 +1,4 @@
+import filter from 'leo-profanity';
 import PropTypes from 'prop-types';
 import { Nav } from 'react-bootstrap';
 
@@ -9,7 +10,7 @@ const Channel = ({ channelData }) => {
   return (
     <Nav.Item key={id} className="d-flex w-100">
       <Nav.Link eventKey={id} as="button" className="rounded-0 text-start text-truncate">
-        # {name}
+        # {filter.clean(name)}
       </Nav.Link>
       {removable && <ChannelDropdown channelId={id} />}
     </Nav.Item>
