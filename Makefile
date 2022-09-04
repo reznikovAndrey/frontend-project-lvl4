@@ -9,3 +9,7 @@ start:
 
 deploy:
 	git push heroku main
+
+install:
+	npm ci
+	make -C frontend ci

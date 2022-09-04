@@ -4,43 +4,43 @@
       "login": {
         "fields": {
           "username": {
-            "label": "Имя пользователя",
-            "placeholder": "Ваше имя"
+            "label": "Ваш ник",
+            "placeholder": "Ваш ник"
           },
           "password": {
             "label": "Пароль",
-            "placeholder": "Ваш пароль"
+            "placeholder": "Пароль"
           }
         },
         "errors": {
           "required": "Необходимо заполнить",
-          "auth": "Неверное имя пользователя или пароль"
+          "auth": "Неверные имя пользователя или пароль"
         },
         "title": "Войти",
-        "buttonText": "Отправить"
+        "buttonText": "Войти"
       },
       "signup": {
         "fields": {
           "username": {
             "label": "Имя пользователя",
-            "placeholder": "Ваше имя",
+            "placeholder": "Имя пользователя",
             "errors": {
-              "short": "Минимум 3 символа",
-              "long": "Максимальная длина - 20 символов"
+              "short": "От 3 до 20 символов",
+              "long": "От 3 до 20 символов"
             }
           },
           "password": {
             "label": "Пароль",
-            "placeholder": "Ваш пароль",
+            "placeholder": "Пароль",
             "errors": {
-              "short": "Минимум 6 символов"
+              "short": "Не менее 6 символов"
             }
           },
           "passwordConfirm": {
-            "label": "Подтверждение пароля",
-            "placeholder": "Подтверждение пароля",
+            "label": "Подтвердите пароль",
+            "placeholder": "Подтвердите пароль",
             "errors": {
-              "notMatch": "Пароли не совпадают"
+              "notMatch": "Пароли должны совпадать"
             }
           }
         },
@@ -49,7 +49,7 @@
           "auth": "Пользователь с именем '{{ username }}' уже существует"
         },
         "title": "Регистрация",
-        "buttonText": "Зарегистрироваться"
+        "buttonText": "Отправить"
       },
       "addMessage": {
         "fields": {
@@ -118,7 +118,7 @@
     },
     "notifications": {
       "errors": {
-        "network": "Ошибка сети"
+        "network": "Ошибка соединения"
       },
       "success": {
         "channel": {
