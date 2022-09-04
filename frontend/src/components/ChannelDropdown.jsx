@@ -21,7 +21,9 @@ const ChannelDropdown = ({ channelId }) => {
         variant={channelId === currentChannelId ? 'secondary' : 'light'}
         className="rounded-0 h-100 border-0"
         style={{ marginLeft: -1 }}
-      />
+      >
+        <span className="visually-hidden">{t('pages.home.dropdown')}</span>
+      </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey="rename">{t('pages.home.rename')}</Dropdown.Item>
         <Dropdown.Item eventKey="remove">{t('pages.home.remove')}</Dropdown.Item>
