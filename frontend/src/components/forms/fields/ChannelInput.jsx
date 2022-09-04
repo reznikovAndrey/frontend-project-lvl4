@@ -16,12 +16,9 @@ const ChannelInput = () => {
   const { t } = useTranslation();
 
   return (
-    <Form.Group className="mb-3">
-      <Form.Label visuallyHidden htmlFor="channelName">
-        {t('forms.channel.fields.channelName.label')}
-      </Form.Label>
+    <Form.Group className="mb-3" controlId="channelName">
+      <Form.Label visuallyHidden>{t('forms.channel.fields.channelName.label')}</Form.Label>
       <Form.Control
-        id="channelName"
         onChange={handleChange}
         value={channelName}
         aria-label={t('forms.channel.fields.channelName.label')}
