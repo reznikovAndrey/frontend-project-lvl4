@@ -18,7 +18,7 @@ const ChannelModal = () => {
   const isChannelsLimitWasReached = channels.length > MAX_CHANNELS_QUANTITY;
 
   const dispatch = useDispatch();
-  const closeModal = useCallback(() => dispatch(actions.closeModal()), []);
+  const closeModal = useCallback(() => dispatch(actions.closeModal()), [dispatch]);
 
   return (
     isShown && (

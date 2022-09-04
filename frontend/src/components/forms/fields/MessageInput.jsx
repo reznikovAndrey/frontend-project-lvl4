@@ -15,11 +15,11 @@ const MessageInput = ({ currentChannelId = null }) => {
   useEffect(() => {
     input.current.focus();
     validateForm();
-  }, [currentChannelId]);
+  }, [currentChannelId, validateForm]);
 
   useEffect(() => {
     validateForm();
-  }, [message]);
+  }, [message, validateForm]);
 
   const { t } = useTranslation();
 

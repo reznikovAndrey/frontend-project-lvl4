@@ -22,7 +22,7 @@ export const SocketProvider = ({ children, socket }) => {
       socket.off('renameChannel');
       socket.off('removeChannel');
     };
-  }, []);
+  }, [dispatch, socket]);
 
   const mapping = useMemo(
     () => ({
@@ -31,7 +31,7 @@ export const SocketProvider = ({ children, socket }) => {
       renameChannel: (payload, response) => socket.volatile.emit('renameChannel', payload, response),
       removeChannel: (payload, response) => socket.volatile.emit('removeChannel', payload, response),
     }),
-    [],
+    [socket.volatile],
   );
 
   return <SocketContext.Provider value={mapping}>{children}</SocketContext.Provider>;

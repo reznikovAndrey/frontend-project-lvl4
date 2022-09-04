@@ -12,7 +12,7 @@ const HomePage = () => {
   useEffect(() => {
     const headers = getAuthHeader();
     dispatch(fetchChats(headers));
-  }, []);
+  }, [dispatch, getAuthHeader]);
 
   const { loading } = useSelector(({ chats }) => chats);
 
