@@ -54,8 +54,8 @@
       "addMessage": {
         "fields": {
           "message": {
-            "label": "Ваше сообщение",
-            "placeholder": "Введите Ваше сообщение"
+            "label": "Новое сообщение",
+            "placeholder": "Новое сообщение"
           }
         },
         "buttonText": "Отправить"
