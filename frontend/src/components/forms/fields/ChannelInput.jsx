@@ -17,7 +17,9 @@ const ChannelInput = () => {
 
   return (
     <Form.Group className="mb-3">
-      <Form.Label visuallyHidden>{t('forms.channel.fields.channelName.label')}</Form.Label>
+      <Form.Label visuallyHidden htmlFor="channelName">
+        {t('forms.channel.fields.channelName.label')}
+      </Form.Label>
       <Form.Control
         id="channelName"
         onChange={handleChange}
