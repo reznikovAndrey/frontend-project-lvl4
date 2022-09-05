@@ -37,6 +37,7 @@ const MessageInput = ({ currentChannelId = null }) => {
 };
 
 MessageInput.propTypes = {
+  // eslint-disable-next-line react/require-default-props
   currentChannelId: PropTypes.number,
 };
 

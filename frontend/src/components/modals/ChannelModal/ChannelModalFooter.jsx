@@ -55,6 +55,7 @@ ChannelModalFooter.propTypes = {
   modalAction: PropTypes.oneOf(['add', 'rename', 'remove']).isRequired,
   isChannelsLimitWasReached: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/require-default-props
   channelId: PropTypes.number,
 };
 

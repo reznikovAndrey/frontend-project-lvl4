@@ -18,6 +18,7 @@ const AddMessageButton = ({ isDisabled = false }) => {
 };
 
 AddMessageButton.propTypes = {
+  // eslint-disable-next-line react/require-default-props
   isDisabled: PropTypes.bool,
 };
 
