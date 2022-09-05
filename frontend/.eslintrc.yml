@@ -5,7 +5,6 @@ extends:
   - plugin:react/recommended
   - plugin:react-hooks/recommended
   - airbnb
-  - prettier
 parserOptions:
   ecmaFeatures:
     jsx: true
@@ -13,10 +12,8 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-  - prettier
 rules:
   {
-    prettier/prettier: 2,
     react/react-in-jsx-scope: 'off',
     react/function-component-definition: [2, { 'namedComponents': 'arrow-function' }],
     import/order:

@@ -2,7 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Navbar from './components/Navbar';
-import { HomePage, AuthPage, NotFoundPage, PrivatePage, PublicPage } from './pages';
+import {
+  HomePage, AuthPage, NotFoundPage, PrivatePage, PublicPage,
+} from './pages';
 
 import routes from './routes';
 

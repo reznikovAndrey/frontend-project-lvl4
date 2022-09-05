@@ -33,7 +33,11 @@ const MessageForm = () => {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={getValidationSchema()}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={getValidationSchema()}
+    >
       {(props) => (
         <Form onSubmit={props.handleSubmit} className="py-1 border rounded-2">
           <InputGroup>

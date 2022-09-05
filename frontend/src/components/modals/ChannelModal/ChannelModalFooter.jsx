@@ -6,7 +6,9 @@ import { toast } from 'react-toastify';
 
 import { useSocket } from '../../../hooks';
 
-const ChannelModalFooter = ({ modalAction, isChannelsLimitWasReached, closeModal, channelId = null }) => {
+const ChannelModalFooter = ({
+  modalAction, isChannelsLimitWasReached, closeModal, channelId = null,
+}) => {
   const [btnDisabled, setBtnDisabled] = useState(false);
   const { t } = useTranslation();
 

@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import {
+  Container, Row, Col, Card,
+} from 'react-bootstrap';
 
 import CardBody from './CardBody';
 import CardFooter from './CardFooter';

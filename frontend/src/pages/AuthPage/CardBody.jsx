@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import { Row, Col, Card, Image } from 'react-bootstrap';
+import {
+  Row, Col, Card, Image,
+} from 'react-bootstrap';
 
 import loginImage from '../../assets/login.jpg';
 import signupImage from '../../assets/signup.jpg';

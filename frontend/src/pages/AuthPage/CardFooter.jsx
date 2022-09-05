@@ -11,7 +11,8 @@ const CardFooter = ({ type }) => {
   return (
     <Card.Footer className="p-4">
       <div className="text-center">
-        <span>{t(`pages.${type}.footerText`)}</span>{' '}
+        <span>{t(`pages.${type}.footerText`)}</span>
+        {' '}
         <Link to={type === 'login' ? routes.signupPage() : routes.loginPage()}>{t(`pages.${type}.footerLink`)}</Link>
       </div>
     </Card.Footer>

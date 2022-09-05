@@ -9,8 +9,8 @@ const ChannelModalBody = ({ modalAction, isChannelsLimitWasReached, closeModal }
 
   return (
     <Modal.Body>
-      {modalAction === 'add' &&
-        (isChannelsLimitWasReached ? (
+      {modalAction === 'add'
+        && (isChannelsLimitWasReached ? (
           <p>{t(`modals.channel.${modalAction}.body`)}</p>
         ) : (
           <ChannelForm closeModal={closeModal} />
