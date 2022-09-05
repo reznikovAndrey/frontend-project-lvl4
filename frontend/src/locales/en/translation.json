@@ -115,6 +115,12 @@
       "signup": {
         "footerText": "Already have account?",
         "footerLink": "Login"
+      },
+      "notFound": {
+        "imgAlt": "page not found",
+        "header": "Page was not found",
+        "text": "But you can go",
+        "link": "to the main page"
       }
     },
     "notifications": {
