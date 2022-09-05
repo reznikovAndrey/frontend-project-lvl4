@@ -1,6 +1,7 @@
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import i18next from 'i18next';
 import filter from 'leo-profanity';
+import React from 'react';
 import { initReactI18next, I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';

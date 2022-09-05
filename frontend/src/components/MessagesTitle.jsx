@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const MessagesTitle = ({ name, messagesQuantity }) => {

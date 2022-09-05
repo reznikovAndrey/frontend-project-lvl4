@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import { useMemo, useEffect, createContext } from 'react';
+import {
+  React, useMemo, useEffect, createContext,
+} from 'react';
 import { useDispatch } from 'react-redux';
 import { Socket } from 'socket.io-client';
 

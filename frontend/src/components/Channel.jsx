@@ -1,5 +1,6 @@
 import filter from 'leo-profanity';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Nav } from 'react-bootstrap';
 
 import ChannelDropdown from './ChannelDropdown';

@@ -1,5 +1,6 @@
 import filter from 'leo-profanity';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const Message = ({ username, body }) => (
   <div className="text-break mb-2">
