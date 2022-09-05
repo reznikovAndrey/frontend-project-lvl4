@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useRef, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
@@ -12,11 +12,16 @@ const Messages = () => {
   const { name = '' } = channels.find(({ id }) => id === currentChannelId) || {};
   const channelMessages = messages.filter(({ channelId }) => channelId === currentChannelId);
 
+  const el = useRef();
+  useEffect(() => {
+    el.current?.scrollTo(0, el.current.scrollHeight);
+  });
+
   return (
     <Col xs={8} md={9} lg={10} className="p-0 h-100">
       <div className="d-flex flex-column h-100">
         <MessagesTitle name={name} messagesQuantity={channelMessages.length} />
-        <div className="overflow-auto px-5">
+        <div className="overflow-auto px-5" ref={el}>
           {channelMessages.map((message) => (
             // eslint-disable-next-line react/jsx-props-no-spreading
             <Message key={message.id} {...message} />
