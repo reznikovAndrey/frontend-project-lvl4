@@ -3,7 +3,7 @@
 
 This project is simple implementation of minimal chat application, like Slack, etc. After registration you can managing (add, rename and remove) channels, add messages. 
 
-You can check deployed project on [Heroku](https://boiling-wave-24818.herokuapp.com/).
+You can check deployed project on [Railway](https://frontend-project-lvl4-production-e109.up.railway.app/).
 
 Used technologies:
 - [Web sockets](https://socket.io/)
